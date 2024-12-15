@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Search, Library, Command, Lightbulb, ChevronUp, X, Filter, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Search, ChevronUp, X, ArrowRight } from 'lucide-react'; // Remove unused icons
+
 
 // SVG graphics for agent type illustrations
 const KnowledgeGraphic = () => (
@@ -385,14 +386,14 @@ const AIAgentsShowcase = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedIndustry, setSelectedIndustry] = useState('');
   const [selectedJobFunction, setSelectedJobFunction] = useState('');
-  const [selectedAgent, setSelectedAgent] = useState(null);
-  const [selectedType, setSelectedType] = useState('all');
+  const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null);
+  const [_selectedType, _setSelectedType] = useState('all');
 
   // Get unique values for filters
   const allItems = Object.entries(AGENTS_DATA).map(([title, details]) => ({
-    title,
+    title, // Add the key as the title
     ...details
-  }));
+  }));  
 
   const industries = [...new Set(allItems.flatMap(item => item.industries.split(', ')))];
   const jobFunctions = [...new Set(allItems.flatMap(item => item.jobFunctions.split(', ')))];
@@ -419,57 +420,93 @@ const AIAgentsShowcase = () => {
     automation: filteredAgents.filter(agent => agent.type === 'Automation Workflow')
   };
 
-  // Educational block component
-  const AgentTypeBlock = ({ title, description, examples, graphic: Graphic, color }) => (
-    <div className={`p-6 rounded-lg border-2 ${color} bg-white`}>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <Graphic />
-      <p className="text-gray-600 my-4">{description}</p>
+interface AgentTypeBlockProps {
+  title: string;
+  description: string;
+  examples: string[];
+  graphic: React.ComponentType;
+  color: string;
+}
+
+const AgentTypeBlock: React.FC<AgentTypeBlockProps> = ({ title, description, examples, graphic: Graphic, color }) => (
+  <div className={`p-6 rounded-lg border-2 ${color} bg-white`}>
+    <h3 className="text-xl font-bold mb-3">{title}</h3>
+    <Graphic />
+    <p className="text-gray-600 my-4">{description}</p>
+    <div className="space-y-2">
+      {examples.map((example, index) => (
+        <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
+          <ArrowRight size={16} />
+          <span>{example}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+
+interface Agent {
+  title: string; // Add the title property
+  description: string;
+  type: string;
+  useCase: string;
+  detailedDescription: string;
+  industries: string;
+  jobFunctions: string;
+  category: string;
+}
+
+
+interface AgentCardProps {
+  agent: Agent;
+  onSelectAgent: (agent: Agent) => void; // Callback to handle agent selection
+}
+
+const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
+  const getTypeStyle = () => {
+    switch (agent.type) {
+      case 'Knowledge Agent':
+        return 'bg-blue-50 hover:bg-blue-100 border-blue-200';
+      case 'Action Agent':
+        return 'bg-green-50 hover:bg-green-100 border-green-200';
+      case 'Automation Workflow':
+        return 'bg-red-50 hover:bg-red-100 border-red-200';
+      default:
+        return 'bg-gray-50 hover:bg-gray-100 border-gray-200';
+    }
+  };
+
+  return (
+    <div
+      className={`p-6 rounded-lg border cursor-pointer transition-all ${getTypeStyle()}`}
+      onClick={() => onSelectAgent(agent)}
+    >
+      <h3 className="text-lg font-semibold mb-2">{agent.type}</h3>
+      <p className="text-gray-600 mb-4">{agent.description}</p>
       <div className="space-y-2">
-        {examples.map((example, index) => (
-          <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
-            <ArrowRight size={16} />
-            <span>{example}</span>
-          </div>
-        ))}
+        <div className="flex flex-wrap gap-2">
+          {agent.industries.split(', ').map((industry, index) => (
+            <span
+              key={index}
+              className="text-xs px-2 py-1 bg-white rounded-full border"
+            >
+              {industry}
+            </span>
+          ))}
+        </div>
+        <p className="text-sm text-gray-500">{agent.category}</p>
       </div>
     </div>
   );
+};
 
-  // Agent card component
-  const AgentCard = ({ agent }) => {
-    const getTypeStyle = () => {
-      switch(agent.type) {
-        case 'Knowledge Agent': return 'bg-blue-50 hover:bg-blue-100 border-blue-200';
-        case 'Action Agent': return 'bg-green-50 hover:bg-green-100 border-green-200';
-        case 'Automation Workflow': return 'bg-red-50 hover:bg-red-100 border-red-200';
-        default: return 'bg-gray-50 hover:bg-gray-100 border-gray-200';
-      }
-    };
 
-    return (
-      <div 
-        className={`p-6 rounded-lg border cursor-pointer transition-all ${getTypeStyle()}`}
-        onClick={() => setSelectedAgent(agent)}
-      >
-        <h3 className="text-lg font-semibold mb-2">{agent.title}</h3>
-        <p className="text-gray-600 mb-4">{agent.description}</p>
-        <div className="space-y-2">
-          <div className="flex flex-wrap gap-2">
-            {agent.industries.split(', ').map(industry => (
-              <span key={industry} className="text-xs px-2 py-1 bg-white rounded-full border">
-                {industry}
-              </span>
-            ))}
-          </div>
-          <p className="text-sm text-gray-500">{agent.category}</p>
-        </div>
-      </div>
-    );
-  };
+  interface AgentDetailModalProps {
+    agent: Agent; // Assuming `Agent` interface exists
+    onClose: () => void;
+  }
 
-  // Modal component
-  const AgentDetailModal = ({ agent, onClose }) => {
+  const AgentDetailModal: React.FC<AgentDetailModalProps> = ({ agent, onClose }) => {
     if (!agent) return null;
 
     const getModalColor = () => {
@@ -661,47 +698,15 @@ const AIAgentsShowcase = () => {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {agents.map(agent => (
-              <AgentCard key={agent.title} agent={agent} />
+              <AgentCard
+              key={agent.title}
+              agent={agent}
+              onSelectAgent={(selectedAgent) => setSelectedAgent(selectedAgent)} // Or your callback logic
+            />
             ))}
           </div>
         </div>
       ))}
-
-      {/* Floating Type Filter
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg p-2 flex gap-2 z-40">
-        <button
-          onClick={() => setSelectedType('all')}
-          className={`px-4 py-2 rounded-full transition-all ${
-            selectedType === 'all' ? 'bg-gray-100 font-medium' : ''
-          }`}
-        >
-          All
-        </button>
-        <button
-          onClick={() => setSelectedType('knowledge')}
-          className={`px-4 py-2 rounded-full transition-all ${
-            selectedType === 'knowledge' ? 'bg-blue-100 text-blue-600 font-medium' : ''
-          }`}
-        >
-          Knowledge
-        </button>
-        <button
-          onClick={() => setSelectedType('action')}
-          className={`px-4 py-2 rounded-full transition-all ${
-            selectedType === 'action' ? 'bg-green-100 text-green-600 font-medium' : ''
-          }`}
-        >
-          Action
-        </button>
-        <button
-          onClick={() => setSelectedType('automation')}
-          className={`px-4 py-2 rounded-full transition-all ${
-            selectedType === 'automation' ? 'bg-red-100 text-red-600 font-medium' : ''
-          }`}
-        >
-          Automation
-        </button>
-      </div> */}
 
       {/* Agent Detail Modal */}
       {selectedAgent && (
