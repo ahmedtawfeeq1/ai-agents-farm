@@ -1,11 +1,18 @@
 import { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
-/* Thius is fine: https://github.com/hannoeru/vite-plugin-pages/issues/120 */
-/** @ts-ignore */
+import Navigation from "./components/ui/navigation";
+/* @ts-ignore */
 import routes from "~react-pages";
 
 function App() {
-  return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
+  return (
+    <div>
+      <Navigation />
+      <Suspense fallback={<p>Loading...</p>}>
+        {useRoutes(routes)}
+      </Suspense>
+    </div>
+  );
 }
 
 export default App;

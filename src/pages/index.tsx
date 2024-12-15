@@ -393,7 +393,7 @@ const AIAgentsShowcase = () => {
   const allItems = Object.entries(AGENTS_DATA).map(([title, details]) => ({
     title, // Add the key as the title
     ...details
-  }));  
+  }));   
 
   const industries = [...new Set(allItems.flatMap(item => item.industries.split(', ')))];
   const jobFunctions = [...new Set(allItems.flatMap(item => item.jobFunctions.split(', ')))];
@@ -481,7 +481,7 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
       className={`p-6 rounded-lg border cursor-pointer transition-all ${getTypeStyle()}`}
       onClick={() => onSelectAgent(agent)}
     >
-      <h3 className="text-lg font-semibold mb-2">{agent.title}</h3>
+      <h3 className="text-lg font-semibold mb-2">{agent.title}</h3> 
       <p className="text-gray-600 mb-4">{agent.description}</p>
       <div className="space-y-2">
         <div className="flex flex-wrap gap-2">
