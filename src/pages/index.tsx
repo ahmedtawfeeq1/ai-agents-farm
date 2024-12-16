@@ -1,34 +1,58 @@
+import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Search, ChevronUp, X, ArrowRight } from 'lucide-react'; // Remove unused icons
+import { Search, ChevronUp, X, ArrowRight } from 'lucide-react';
 
 
-// SVG graphics for agent type illustrations
+// SVG graphics enhanced with gradients and modern style
 const KnowledgeGraphic = () => (
   <svg viewBox="0 0 200 120" className="w-full h-32">
-    <rect x="20" y="20" width="160" height="80" rx="4" fill="#EBF5FF" stroke="#3B82F6" strokeWidth="2"/>
-    <circle cx="60" cy="60" r="20" fill="#3B82F6" opacity="0.2"/>
-    <path d="M40 80 L160 80" stroke="#3B82F6" strokeWidth="2"/>
-    <circle cx="140" cy="40" r="15" fill="#3B82F6" opacity="0.3"/>
+    <defs>
+      <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#60A5FA" stopOpacity="0.1" />
+      </linearGradient>
+    </defs>
+    <rect x="20" y="20" width="160" height="80" rx="8" fill="#EBF5FF" stroke="#3B82F6" strokeWidth="2"/>
+    <circle cx="60" cy="60" r="20" fill="url(#blueGrad)"/>
+    <path d="M40 80 L160 80" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4,4"/>
+    <circle cx="140" cy="40" r="15" fill="#3B82F6" opacity="0.15"/>
   </svg>
 );
 
 const ActionGraphic = () => (
   <svg viewBox="0 0 200 120" className="w-full h-32">
-    <rect x="20" y="20" width="160" height="80" rx="4" fill="#ECFDF5" stroke="#059669" strokeWidth="2"/>
+    <defs>
+      <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#059669" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#34D399" stopOpacity="0.1" />
+      </linearGradient>
+    </defs>
+    <rect x="20" y="20" width="160" height="80" rx="8" fill="#ECFDF5" stroke="#059669" strokeWidth="2"/>
     <path d="M40 60 L160 60" stroke="#059669" strokeWidth="2" strokeDasharray="5,5"/>
-    <circle cx="100" cy="60" r="25" fill="#059669" opacity="0.2"/>
+    <circle cx="100" cy="60" r="25" fill="url(#greenGrad)"/>
     <path d="M70 40 L130 80" stroke="#059669" strokeWidth="2"/>
   </svg>
 );
 
 const AutomationGraphic = () => (
   <svg viewBox="0 0 200 120" className="w-full h-32">
-    <rect x="20" y="20" width="160" height="80" rx="4" fill="#FEF2F2" stroke="#DC2626" strokeWidth="2"/>
+    <defs>
+      <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#DC2626" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#F87171" stopOpacity="0.1" />
+      </linearGradient>
+    </defs>
+    <rect x="20" y="20" width="160" height="80" rx="8" fill="#FEF2F2" stroke="#DC2626" strokeWidth="2"/>
     <path d="M40 40 C70 40, 130 80, 160 80" stroke="#DC2626" strokeWidth="2" fill="none"/>
-    <circle cx="100" cy="60" r="20" fill="#DC2626" opacity="0.2"/>
+    <circle cx="100" cy="60" r="20" fill="url(#redGrad)"/>
     <path d="M60 80 L140 40" stroke="#DC2626" strokeWidth="2" strokeDasharray="4,4"/>
   </svg>
 );
+// Define animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
 
 // Complete agents data constant
 const AGENTS_DATA = {
@@ -428,8 +452,9 @@ interface AgentTypeBlockProps {
   color: string;
 }
 
-const AgentTypeBlock: React.FC<AgentTypeBlockProps> = ({ title, description, examples, graphic: Graphic, color }) => (
-  <div className={`p-6 rounded-lg border-2 ${color} bg-white`}>
+// Agent Type Block Component
+const AgentTypeBlock: React.FC<AgentTypeBlockProps>  = ({ title, description, examples, graphic: Graphic, color }) => (
+  <motion.div variants={fadeInUp} className={`p-6 rounded-lg border-2 ${color} bg-white`}>
     <h3 className="text-xl font-bold mb-3">{title}</h3>
     <Graphic />
     <p className="text-gray-600 my-4">{description}</p>
@@ -441,9 +466,8 @@ const AgentTypeBlock: React.FC<AgentTypeBlockProps> = ({ title, description, exa
         </div>
       ))}
     </div>
-  </div>
+  </motion.div>
 );
-
 
 interface Agent {
   title: string; // Add the title property
@@ -601,128 +625,148 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Educational Blocks */}
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
-        <AgentTypeBlock
-          title="Knowledge Agents"
-          description="AI-powered tools that gather, analyze, and synthesize information to create valuable insights and content."
-          examples={[
-            "Research and analysis",
-            "Content creation",
-            "Strategic planning"
-          ]}
-          graphic={KnowledgeGraphic}
-          color="border-blue-600"
-        />
-        <AgentTypeBlock
-          title="Action Agents"
-          description="Automated assistants that perform specific tasks and execute actions based on defined triggers and rules."
-          examples={[
-            "Calendar management",
-            "Task monitoring",
-            "Performance tracking"
-          ]}
-          graphic={ActionGraphic}
-          color="border-green-600"
-        />
-        <AgentTypeBlock
-          title="Automation Workflows"
-          description="End-to-end process automation solutions that connect multiple systems and streamline complex workflows."
-          examples={[
-            "Document processing",
-            "Multi-channel integration",
-            "Event-based automation"
-          ]}
-          graphic={AutomationGraphic}
-          color="border-red-600"
-        />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      {/* Hero Section */}
+      <motion.div
+        className="lg:w-1/2 space-y-6 mx-auto"
+        initial={{ opacity: 50, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        >
+      <div className="container mx-auto px-4 py-12 text-center">
+      <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
+        AI Agents Farm! 🤖
+      </span>
+      <h1 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+        Discover Your Perfect AI Assistant!
+      </h1>
+      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        Explore our curated collection of AI agents and automation workflows, brought to you from +20 Ai & Automation Coaching Journies with industries experts - designed to transform your productivity.
+      </p>
       </div>
+      </motion.div>
+
+      {/* Agents Showcase */}
+      <div className="container mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+      <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
+        3-Pillers for Our AI Agents & Automation Coaching Program!
+      </span>
+      </div>
+
+      {/* Educational Blocks */}
+      <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+      className="container mx-auto grid md:grid-cols-3 gap-6 max-w-6xl px-4 mb-12"
+      >
+      <AgentTypeBlock
+        title="Knowledge Agents"
+        description="AI tools that gather, analyze, and synthesize information."
+        examples={['Research and analysis', 'Content creation', 'Strategic planning']}
+        graphic={KnowledgeGraphic}
+        color="border-blue-600"
+      />
+      <AgentTypeBlock
+        title="Action Agents"
+        description="Assistants that perform specific tasks based on triggers."
+        examples={['Calendar management', 'Task monitoring', 'Performance tracking']}
+        graphic={ActionGraphic}
+        color="border-green-600"
+      />
+      <AgentTypeBlock
+        title="Automation Workflows"
+        description="End-to-end process automation solutions."
+        examples={['Document processing', 'Multi-channel integration', 'Event-based automation']}
+        graphic={AutomationGraphic}
+        color="border-red-600"
+      />
+      </motion.div>
 
       {/* Search and Filters */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-12">
         <div className="grid md:grid-cols-4 gap-4">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search agents..."
-              className="w-full p-3 pl-10 border rounded-lg"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          </div>
-          
-          <select
-            className="p-3 border rounded-lg"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="All">All Categories</option>
-            <option value="Knowledge Agent">Knowledge Agents</option>
-            <option value="Action Agent">Action Agents</option>
-            <option value="Automation Workflow">Automation Workflows</option>
-          </select>
-          
-          <select
-            className="p-3 border rounded-lg"
-            value={selectedIndustry}
-            onChange={(e) => setSelectedIndustry(e.target.value)}
-          >
-            <option value="">All Industries</option>
-            {industries.map(industry => (
-              <option key={industry} value={industry}>{industry}</option>
-            ))}
-          </select>
-          
-          <select
-            className="p-3 border rounded-lg"
-            value={selectedJobFunction}
-            onChange={(e) => setSelectedJobFunction(e.target.value)}
-          >
-            <option value="">All Job Functions</option>
-            {jobFunctions.map(job => (
-              <option key={job} value={job}>{job}</option>
-            ))}
-          </select>
+        <div className="relative">
+          <input
+          type="text"
+          placeholder="Search agents..."
+          className="w-full p-3 pl-10 border rounded-lg"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+        </div>
+        <select
+          className="p-3 border rounded-lg"
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="All">All Categories</option>
+          <option value="Knowledge Agent">Knowledge Agents</option>
+          <option value="Action Agent">Action Agents</option>
+          <option value="Automation Workflow">Automation Workflows</option>
+        </select>
+        <select
+          className="p-3 border rounded-lg"
+          value={selectedIndustry}
+          onChange={(e) => setSelectedIndustry(e.target.value)}
+        >
+          <option value="">All Industries</option>
+          {industries.map((industry) => (
+          <option key={industry} value={industry}>
+            {industry}
+          </option>
+          ))}
+        </select>
+        <select
+          className="p-3 border rounded-lg"
+          value={selectedJobFunction}
+          onChange={(e) => setSelectedJobFunction(e.target.value)}
+        >
+          <option value="">All Job Functions</option>
+          {jobFunctions.map((job) => (
+          <option key={job} value={job}>
+            {job}
+          </option>
+          ))}
+        </select>
         </div>
       </div>
 
       {/* Agent Sections */}
       {Object.entries(groupedAgents).map(([type, agents]) => (
         <div key={type} className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">
-            {type === 'knowledge' && 'Knowledge Agents'}
-            {type === 'action' && 'Action Agents'}
-            {type === 'automation' && 'Automation Workflows'}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {agents.map(agent => (
-              <AgentCard
-              key={agent.title}
-              agent={agent}
-              onSelectAgent={(selectedAgent) => setSelectedAgent(selectedAgent)} // Or your callback logic
-            />
-            ))}
-          </div>
+        <h2 className="text-2xl font-bold mb-6">
+          {type === 'knowledge' && 'Knowledge Agents'}
+          {type === 'action' && 'Action Agents'}
+          {type === 'automation' && 'Automation Workflows'}
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {agents.map((agent) => (
+          <AgentCard
+            key={agent.title}
+            agent={agent}
+            onSelectAgent={(selectedAgent) => setSelectedAgent(selectedAgent)}
+          />
+          ))}
+        </div>
         </div>
       ))}
 
       {/* Agent Detail Modal */}
       {selectedAgent && (
-        <AgentDetailModal 
-          agent={selectedAgent} 
-          onClose={() => setSelectedAgent(null)} 
-        />
+        <AgentDetailModal agent={selectedAgent} onClose={() => setSelectedAgent(null)} />
       )}
 
       {/* Back to Top Button */}
-      <button 
+      <button
         className="fixed bottom-24 right-6 bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <ChevronUp size={24} />
       </button>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import Navigation from "./components/ui/navigation";
+
 /* @ts-ignore */
 import routes from "~react-pages";
 
