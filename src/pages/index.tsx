@@ -403,7 +403,7 @@ const AGENTS_DATA = {
     jobFunctions: "Project Managers, IT Teams",
     category: "Workflow"
   },
-  "Customer Success Milestone Workflow": {
+  "Customer Success Monitoring": {
   description: "Automated customer lifecycle milestone management.",
   type: "Automation Workflow",
   useCase: "Track and respond to key customer lifecycle events.",

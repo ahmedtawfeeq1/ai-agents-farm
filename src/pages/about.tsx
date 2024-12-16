@@ -89,10 +89,13 @@ const EnhancedCoachingJourney = () => {
               Let AI Agents work for you, so you focus on what matters most.
             </p>
             <div className="flex gap-4">
-              <button className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition">
+              <button
+                className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition"
+                onClick={() => window.location.href = "https://wa.me/+201288493425"}
+              >
                 Start Now! 🚀
               </button>
-              <button className="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 transition">
+              <button className="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 transition" onClick={() => window.location.href = "https://www.facebook.com/share/p/15hK4hvtr6/"}>
                 Learn More
               </button>
             </div>
@@ -176,7 +179,10 @@ const EnhancedCoachingJourney = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition">
+        <button
+          className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"
+          onClick={() => window.location.href = "https://wa.me/+201288493425"}
+        >
           Book Your Spot 🚀
         </button>
       </motion.div>
