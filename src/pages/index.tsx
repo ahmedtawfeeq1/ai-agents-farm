@@ -12,10 +12,10 @@ const KnowledgeGraphic = () => (
         <stop offset="100%" stopColor="#60A5FA" stopOpacity="0.1" />
       </linearGradient>
     </defs>
-    <rect x="20" y="20" width="160" height="80" rx="8" fill="#EBF5FF" stroke="#3B82F6" strokeWidth="2"/>
-    <circle cx="60" cy="60" r="20" fill="url(#blueGrad)"/>
-    <path d="M40 80 L160 80" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4,4"/>
-    <circle cx="140" cy="40" r="15" fill="#3B82F6" opacity="0.15"/>
+    <rect x="20" y="20" width="160" height="80" rx="8" fill="#EBF5FF" stroke="#3B82F6" strokeWidth="2" />
+    <circle cx="60" cy="60" r="20" fill="url(#blueGrad)" />
+    <path d="M40 80 L160 80" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4,4" />
+    <circle cx="140" cy="40" r="15" fill="#3B82F6" opacity="0.15" />
   </svg>
 );
 
@@ -27,10 +27,10 @@ const ActionGraphic = () => (
         <stop offset="100%" stopColor="#34D399" stopOpacity="0.1" />
       </linearGradient>
     </defs>
-    <rect x="20" y="20" width="160" height="80" rx="8" fill="#ECFDF5" stroke="#059669" strokeWidth="2"/>
-    <path d="M40 60 L160 60" stroke="#059669" strokeWidth="2" strokeDasharray="5,5"/>
-    <circle cx="100" cy="60" r="25" fill="url(#greenGrad)"/>
-    <path d="M70 40 L130 80" stroke="#059669" strokeWidth="2"/>
+    <rect x="20" y="20" width="160" height="80" rx="8" fill="#ECFDF5" stroke="#059669" strokeWidth="2" />
+    <path d="M40 60 L160 60" stroke="#059669" strokeWidth="2" strokeDasharray="5,5" />
+    <circle cx="100" cy="60" r="25" fill="url(#greenGrad)" />
+    <path d="M70 40 L130 80" stroke="#059669" strokeWidth="2" />
   </svg>
 );
 
@@ -42,10 +42,10 @@ const AutomationGraphic = () => (
         <stop offset="100%" stopColor="#F87171" stopOpacity="0.1" />
       </linearGradient>
     </defs>
-    <rect x="20" y="20" width="160" height="80" rx="8" fill="#FEF2F2" stroke="#DC2626" strokeWidth="2"/>
-    <path d="M40 40 C70 40, 130 80, 160 80" stroke="#DC2626" strokeWidth="2" fill="none"/>
-    <circle cx="100" cy="60" r="20" fill="url(#redGrad)"/>
-    <path d="M60 80 L140 40" stroke="#DC2626" strokeWidth="2" strokeDasharray="4,4"/>
+    <rect x="20" y="20" width="160" height="80" rx="8" fill="#FEF2F2" stroke="#DC2626" strokeWidth="2" />
+    <path d="M40 40 C70 40, 130 80, 160 80" stroke="#DC2626" strokeWidth="2" fill="none" />
+    <circle cx="100" cy="60" r="20" fill="url(#redGrad)" />
+    <path d="M60 80 L140 40" stroke="#DC2626" strokeWidth="2" strokeDasharray="4,4" />
   </svg>
 );
 // Define animation variants
@@ -404,14 +404,14 @@ const AGENTS_DATA = {
     category: "Workflow"
   },
   "Customer Success Monitoring": {
-  description: "Automated customer lifecycle milestone management.",
-  type: "Automation Workflow",
-  useCase: "Track and respond to key customer lifecycle events.",
-  detailedDescription: "Monitors customer journey milestones and triggers appropriate actions based on usage patterns, engagement levels, and success metrics. Automatically identifies critical touchpoints such as first value moment, renewal dates, usage milestones, and potential churn indicators.",
-  industries: "SaaS, Technology, Subscription Services, Professional Services",
-  jobFunctions: "Customer Success Managers, Account Managers, Sales Teams",
-  category: "Customer Success"
-}
+    description: "Automated customer lifecycle milestone management.",
+    type: "Automation Workflow",
+    useCase: "Track and respond to key customer lifecycle events.",
+    detailedDescription: "Monitors customer journey milestones and triggers appropriate actions based on usage patterns, engagement levels, and success metrics. Automatically identifies critical touchpoints such as first value moment, renewal dates, usage milestones, and potential churn indicators.",
+    industries: "SaaS, Technology, Subscription Services, Professional Services",
+    jobFunctions: "Customer Success Managers, Account Managers, Sales Teams",
+    category: "Customer Success"
+  }
 };
 
 const AIAgentsShowcase = () => {
@@ -426,7 +426,7 @@ const AIAgentsShowcase = () => {
   const allItems = Object.entries(AGENTS_DATA).map(([title, details]) => ({
     title, // Add the key as the title
     ...details
-  }));   
+  }));
 
   const industries = [...new Set(allItems.flatMap(item => item.industries.split(', ')))];
   const jobFunctions = [...new Set(allItems.flatMap(item => item.jobFunctions.split(', ')))];
@@ -453,85 +453,85 @@ const AIAgentsShowcase = () => {
     automation: filteredAgents.filter(agent => agent.type === 'Automation Workflow')
   };
 
-interface AgentTypeBlockProps {
-  title: string;
-  description: string;
-  examples: string[];
-  graphic: React.ComponentType;
-  color: string;
-}
+  interface AgentTypeBlockProps {
+    title: string;
+    description: string;
+    examples: string[];
+    graphic: React.ComponentType;
+    color: string;
+  }
 
-// Agent Type Block Component
-const AgentTypeBlock: React.FC<AgentTypeBlockProps>  = ({ title, description, examples, graphic: Graphic, color }) => (
-  <motion.div variants={fadeInUp} className={`p-6 rounded-lg border-2 ${color} bg-white`}>
-    <h3 className="text-xl font-bold mb-3">{title}</h3>
-    <Graphic />
-    <p className="text-gray-600 my-4">{description}</p>
-    <div className="space-y-2">
-      {examples.map((example, index) => (
-        <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
-          <ArrowRight size={16} />
-          <span>{example}</span>
-        </div>
-      ))}
-    </div>
-  </motion.div>
-);
-
-interface Agent {
-  title: string; // Add the title property
-  description: string;
-  type: string;
-  useCase: string;
-  detailedDescription: string;
-  industries: string;
-  jobFunctions: string;
-  category: string;
-}
-
-
-interface AgentCardProps {
-  agent: Agent;
-  onSelectAgent: (agent: Agent) => void; // Callback to handle agent selection
-}
-
-const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
-  const getTypeStyle = () => {
-    switch (agent.type) {
-      case 'Knowledge Agent':
-        return 'bg-blue-50 hover:bg-blue-100 border-blue-200';
-      case 'Action Agent':
-        return 'bg-green-50 hover:bg-green-100 border-green-200';
-      case 'Automation Workflow':
-        return 'bg-red-50 hover:bg-red-100 border-red-200';
-      default:
-        return 'bg-gray-50 hover:bg-gray-100 border-gray-200';
-    }
-  };
-
-  return (
-    <div
-      className={`p-6 rounded-lg border cursor-pointer transition-all ${getTypeStyle()}`}
-      onClick={() => onSelectAgent(agent)}
-    >
-      <h3 className="text-lg font-semibold mb-2">{agent.title}</h3> 
-      <p className="text-gray-600 mb-4">{agent.description}</p>
+  // Agent Type Block Component
+  const AgentTypeBlock: React.FC<AgentTypeBlockProps> = ({ title, description, examples, graphic: Graphic, color }) => (
+    <motion.div variants={fadeInUp} className={`p-6 rounded-lg border-2 ${color} bg-white`}>
+      <h3 className="text-xl font-bold mb-3">{title}</h3>
+      <Graphic />
+      <p className="text-gray-600 my-4">{description}</p>
       <div className="space-y-2">
-        <div className="flex flex-wrap gap-2">
-          {agent.industries.split(', ').map((industry, index) => (
-            <span
-              key={index}
-              className="text-xs px-2 py-1 bg-white rounded-full border"
-            >
-              {industry}
-            </span>
-          ))}
-        </div>
-        <p className="text-sm text-gray-500">{agent.category}</p>
+        {examples.map((example, index) => (
+          <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
+            <ArrowRight size={16} />
+            <span>{example}</span>
+          </div>
+        ))}
       </div>
-    </div>
+    </motion.div>
   );
-};
+
+  interface Agent {
+    title: string; // Add the title property
+    description: string;
+    type: string;
+    useCase: string;
+    detailedDescription: string;
+    industries: string;
+    jobFunctions: string;
+    category: string;
+  }
+
+
+  interface AgentCardProps {
+    agent: Agent;
+    onSelectAgent: (agent: Agent) => void; // Callback to handle agent selection
+  }
+
+  const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
+    const getTypeStyle = () => {
+      switch (agent.type) {
+        case 'Knowledge Agent':
+          return 'bg-blue-50 hover:bg-blue-100 border-blue-200';
+        case 'Action Agent':
+          return 'bg-green-50 hover:bg-green-100 border-green-200';
+        case 'Automation Workflow':
+          return 'bg-red-50 hover:bg-red-100 border-red-200';
+        default:
+          return 'bg-gray-50 hover:bg-gray-100 border-gray-200';
+      }
+    };
+
+    return (
+      <div
+        className={`p-6 rounded-lg border cursor-pointer transition-all ${getTypeStyle()}`}
+        onClick={() => onSelectAgent(agent)}
+      >
+        <h3 className="text-lg font-semibold mb-2">{agent.title}</h3>
+        <p className="text-gray-600 mb-4">{agent.description}</p>
+        <div className="space-y-2">
+          <div className="flex flex-wrap gap-2">
+            {agent.industries.split(', ').map((industry, index) => (
+              <span
+                key={index}
+                className="text-xs px-2 py-1 bg-white rounded-full border"
+              >
+                {industry}
+              </span>
+            ))}
+          </div>
+          <p className="text-sm text-gray-500">{agent.category}</p>
+        </div>
+      </div>
+    );
+  };
 
 
   interface AgentDetailModalProps {
@@ -543,7 +543,7 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
     if (!agent) return null;
 
     const getModalColor = () => {
-      switch(agent.type) {
+      switch (agent.type) {
         case 'Knowledge Agent': return 'bg-blue-50 border-blue-200';
         case 'Action Agent': return 'bg-green-50 border-green-200';
         case 'Automation Workflow': return 'bg-red-50 border-red-200';
@@ -557,89 +557,89 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-  {/* Modal Content */}
-  <div
-    className={`relative w-full sm:max-w-md md:max-w-3xl mx-auto rounded-lg shadow-xl ${getModalColor()} border-2 p-4 sm:p-6 md:p-8`}
-  >
-    {/* Close Button */}
-    <button
-      onClick={onClose}
-      className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
-    >
-      <X size={24} />
-    </button>
+        {/* Modal Content */}
+        <div
+          className={`relative w-full sm:max-w-md md:max-w-3xl mx-auto rounded-lg shadow-xl ${getModalColor()} border-2 p-4 sm:p-6 md:p-8`}
+        >
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+          >
+            <X size={24} />
+          </button>
 
-    {/* Modal Header */}
-    <div className="flex flex-col gap-2 mb-4">
-      <h2 className="text-2xl md:text-3xl font-bold">{agent.title}</h2>
-      <span className="px-3 py-1 bg-white rounded-full text-sm border w-max">
-        {agent.category}
-      </span>
-    </div>
+          {/* Modal Header */}
+          <div className="flex flex-col gap-2 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold">{agent.title}</h2>
+            <span className="px-3 py-1 bg-white rounded-full text-sm border w-max">
+              {agent.category}
+            </span>
+          </div>
 
-    {/* Modal Body */}
-    <div className="grid gap-6">
-      <div>
-        <h3 className="font-semibold text-lg mb-2">Overview</h3>
-        <p className="text-gray-700">{agent.description}</p>
-      </div>
+          {/* Modal Body */}
+          <div className="grid gap-6">
+            <div>
+              <h3 className="font-semibold text-lg mb-2">Overview</h3>
+              <p className="text-gray-700">{agent.description}</p>
+            </div>
 
-      <div>
-        <h3 className="font-semibold text-lg mb-2">Use Cases</h3>
-        <p className="text-gray-700">{agent.useCase}</p>
-      </div>
+            <div>
+              <h3 className="font-semibold text-lg mb-2">Use Cases</h3>
+              <p className="text-gray-700">{agent.useCase}</p>
+            </div>
 
-      <div>
-        <h3 className="font-semibold text-lg mb-2">Implementation</h3>
-        <div className="space-y-2">
-          <div>
-            <h4 className="font-semibold mb-1">Industries</h4>
-            <div className="flex flex-wrap gap-2">
-              {agent.industries.split(", ").map((industry) => (
-                <span
-                  key={industry}
-                  className="bg-white px-2 py-1 rounded-full text-xs border"
-                >
-                  {industry}
-                </span>
-              ))}
+            <div>
+              <h3 className="font-semibold text-lg mb-2">Implementation</h3>
+              <div className="space-y-2">
+                <div>
+                  <h4 className="font-semibold mb-1">Industries</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {agent.industries.split(", ").map((industry) => (
+                      <span
+                        key={industry}
+                        className="bg-white px-2 py-1 rounded-full text-xs border"
+                      >
+                        {industry}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-1">Job Functions</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {agent.jobFunctions.split(", ").map((job) => (
+                      <span
+                        key={job}
+                        className="bg-white px-2 py-1 rounded-full text-xs border"
+                      >
+                        {job}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-1">Job Functions</h4>
-            <div className="flex flex-wrap gap-2">
-              {agent.jobFunctions.split(", ").map((job) => (
-                <span
-                  key={job}
-                  className="bg-white px-2 py-1 rounded-full text-xs border"
-                >
-                  {job}
-                </span>
-              ))}
-            </div>
+          {/* Footer */}
+          <div className="mt-6 flex justify-end gap-4">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 rounded-lg border text-sm hover:bg-gray-100"
+            >
+              Close
+            </button>
+            <button
+              onClick={handleCoachRedirect}
+              className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700"
+            >
+              Coach me for this!
+            </button>
           </div>
         </div>
       </div>
-    </div>
-
-    {/* Footer */}
-    <div className="mt-6 flex justify-end gap-4">
-      <button
-        onClick={onClose}
-        className="px-4 py-2 rounded-lg border text-sm hover:bg-gray-100"
-      >
-        Close
-      </button>
-      <button
-        onClick={handleCoachRedirect}
-        className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700"
-      >
-        Coach me for this!
-      </button>
-    </div>
-  </div>
-</div>
 
     );
   };
@@ -652,143 +652,143 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
         initial={{ opacity: 50, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        >
-      <div className="container mx-auto px-4 py-12 text-center">
-      <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
-        AI Agents Farm! 🤖
-      </span>
-      <h1 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-        Discover Your Perfect AI Assistant!
-      </h1>
-      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-        Explore our curated collection of AI agents and automation workflows, brought to you from +20 Ai & Automation Coaching Journies with industries experts - designed to transform your productivity.
-      </p>
-      </div>
+      >
+        <div className="container mx-auto px-4 py-12 text-center">
+          <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
+            AI Agents Farm! 🤖
+          </span>
+          <h1 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            Discover Your Perfect AI Assistant!
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Explore our curated collection of AI agents and automation workflows, brought to you from +20 Ai & Automation Coaching Journies with industries experts - designed to transform your productivity.
+          </p>
+        </div>
       </motion.div>
 
       {/* Agents Showcase */}
       <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-12">
-      <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
-        3-Pillers for Our AI Agents & Automation Coaching Program!
-      </span>
-      </div>
+        <div className="text-center mb-12">
+          <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
+            3-Pillers for Our AI Agents & Automation Coaching Program!
+          </span>
+        </div>
 
-      {/* Educational Blocks */}
-      <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
-      className="container mx-auto grid md:grid-cols-3 gap-6 max-w-6xl px-4 mb-12"
-      >
-      <AgentTypeBlock
-        title="Knowledge Agents"
-        description="AI tools that gather, analyze, and synthesize information."
-        examples={['Research and analysis', 'Content creation', 'Strategic planning']}
-        graphic={KnowledgeGraphic}
-        color="border-blue-600"
-      />
-      <AgentTypeBlock
-        title="Action Agents"
-        description="Assistants that perform specific tasks based on triggers."
-        examples={['Calendar management', 'Task monitoring', 'Performance tracking']}
-        graphic={ActionGraphic}
-        color="border-green-600"
-      />
-      <AgentTypeBlock
-        title="Automation Workflows"
-        description="End-to-end process automation solutions."
-        examples={['Document processing', 'Multi-channel integration', 'Event-based automation']}
-        graphic={AutomationGraphic}
-        color="border-red-600"
-      />
-      </motion.div>
-
-      {/* Search and Filters */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-12">
-        <div className="grid md:grid-cols-4 gap-4">
-        <div className="relative">
-          <input
-          type="text"
-          placeholder="Search agents..."
-          className="w-full p-3 pl-10 border rounded-lg"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+        {/* Educational Blocks */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+          className="container mx-auto grid md:grid-cols-3 gap-6 max-w-6xl px-4 mb-12"
+        >
+          <AgentTypeBlock
+            title="Knowledge Agents"
+            description="AI tools that gather, analyze, and synthesize information."
+            examples={['Research and analysis', 'Content creation', 'Strategic planning']}
+            graphic={KnowledgeGraphic}
+            color="border-blue-600"
           />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-        </div>
-        <select
-          className="p-3 border rounded-lg"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="All">All Categories</option>
-          <option value="Knowledge Agent">Knowledge Agents</option>
-          <option value="Action Agent">Action Agents</option>
-          <option value="Automation Workflow">Automation Workflows</option>
-        </select>
-        <select
-          className="p-3 border rounded-lg"
-          value={selectedIndustry}
-          onChange={(e) => setSelectedIndustry(e.target.value)}
-        >
-          <option value="">All Industries</option>
-          {industries.map((industry) => (
-          <option key={industry} value={industry}>
-            {industry}
-          </option>
-          ))}
-        </select>
-        <select
-          className="p-3 border rounded-lg"
-          value={selectedJobFunction}
-          onChange={(e) => setSelectedJobFunction(e.target.value)}
-        >
-          <option value="">All Job Functions</option>
-          {jobFunctions.map((job) => (
-          <option key={job} value={job}>
-            {job}
-          </option>
-          ))}
-        </select>
-        </div>
-      </div>
-
-      {/* Agent Sections */}
-      {Object.entries(groupedAgents).map(([type, agents]) => (
-        <div key={type} className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">
-          {type === 'knowledge' && 'Knowledge Agents'}
-          {type === 'action' && 'Action Agents'}
-          {type === 'automation' && 'Automation Workflows'}
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {agents.map((agent) => (
-          <AgentCard
-            key={agent.title}
-            agent={agent}
-            onSelectAgent={(selectedAgent) => setSelectedAgent(selectedAgent)}
+          <AgentTypeBlock
+            title="Action Agents"
+            description="Assistants that perform specific tasks based on triggers."
+            examples={['Calendar management', 'Task monitoring', 'Performance tracking']}
+            graphic={ActionGraphic}
+            color="border-green-600"
           />
-          ))}
-        </div>
-        </div>
-      ))}
+          <AgentTypeBlock
+            title="Automation Workflows"
+            description="End-to-end process automation solutions."
+            examples={['Document processing', 'Multi-channel integration', 'Event-based automation']}
+            graphic={AutomationGraphic}
+            color="border-red-600"
+          />
+        </motion.div>
 
-      {/* Agent Detail Modal */}
-      {selectedAgent && (
-        <AgentDetailModal agent={selectedAgent} onClose={() => setSelectedAgent(null)} />
-      )}
+        {/* Search and Filters */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-12">
+          <div className="grid md:grid-cols-4 gap-4">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search agents..."
+                className="w-full p-3 pl-10 border rounded-lg"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            </div>
+            <select
+              className="p-3 border rounded-lg"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="All">All Categories</option>
+              <option value="Knowledge Agent">Knowledge Agents</option>
+              <option value="Action Agent">Action Agents</option>
+              <option value="Automation Workflow">Automation Workflows</option>
+            </select>
+            <select
+              className="p-3 border rounded-lg"
+              value={selectedIndustry}
+              onChange={(e) => setSelectedIndustry(e.target.value)}
+            >
+              <option value="">All Industries</option>
+              {industries.map((industry) => (
+                <option key={industry} value={industry}>
+                  {industry}
+                </option>
+              ))}
+            </select>
+            <select
+              className="p-3 border rounded-lg"
+              value={selectedJobFunction}
+              onChange={(e) => setSelectedJobFunction(e.target.value)}
+            >
+              <option value="">All Job Functions</option>
+              {jobFunctions.map((job) => (
+                <option key={job} value={job}>
+                  {job}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
-      {/* Back to Top Button */}
-      <button
-        className="fixed bottom-24 right-6 bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      >
-        <ChevronUp size={24} />
-      </button>
+        {/* Agent Sections */}
+        {Object.entries(groupedAgents).map(([type, agents]) => (
+          <div key={type} className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">
+              {type === 'knowledge' && 'Knowledge Agents'}
+              {type === 'action' && 'Action Agents'}
+              {type === 'automation' && 'Automation Workflows'}
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {agents.map((agent) => (
+                <AgentCard
+                  key={agent.title}
+                  agent={agent}
+                  onSelectAgent={(selectedAgent) => setSelectedAgent(selectedAgent)}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* Agent Detail Modal */}
+        {selectedAgent && (
+          <AgentDetailModal agent={selectedAgent} onClose={() => setSelectedAgent(null)} />
+        )}
+
+        {/* Back to Top Button */}
+        <button
+          className="fixed bottom-24 right-6 bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <ChevronUp size={24} />
+        </button>
       </div>
-        {/* Footer */}
-            <footer className="bg-gray-900 text-white text-center py-6">
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white text-center py-6">
         <p>© 2025 Ahmed Tawfeeq, AI & Automation Specialist. All Rights Reserved.</p>
       </footer>
 

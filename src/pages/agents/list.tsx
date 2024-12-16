@@ -1,58 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Search, ChevronUp, X, ArrowRight } from 'lucide-react';
-
-
-// SVG graphics enhanced with gradients and modern style
-const KnowledgeGraphic = () => (
-  <svg viewBox="0 0 200 120" className="w-full h-32">
-    <defs>
-      <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.2" />
-        <stop offset="100%" stopColor="#60A5FA" stopOpacity="0.1" />
-      </linearGradient>
-    </defs>
-    <rect x="20" y="20" width="160" height="80" rx="8" fill="#EBF5FF" stroke="#3B82F6" strokeWidth="2"/>
-    <circle cx="60" cy="60" r="20" fill="url(#blueGrad)"/>
-    <path d="M40 80 L160 80" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4,4"/>
-    <circle cx="140" cy="40" r="15" fill="#3B82F6" opacity="0.15"/>
-  </svg>
-);
-
-const ActionGraphic = () => (
-  <svg viewBox="0 0 200 120" className="w-full h-32">
-    <defs>
-      <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#059669" stopOpacity="0.2" />
-        <stop offset="100%" stopColor="#34D399" stopOpacity="0.1" />
-      </linearGradient>
-    </defs>
-    <rect x="20" y="20" width="160" height="80" rx="8" fill="#ECFDF5" stroke="#059669" strokeWidth="2"/>
-    <path d="M40 60 L160 60" stroke="#059669" strokeWidth="2" strokeDasharray="5,5"/>
-    <circle cx="100" cy="60" r="25" fill="url(#greenGrad)"/>
-    <path d="M70 40 L130 80" stroke="#059669" strokeWidth="2"/>
-  </svg>
-);
-
-const AutomationGraphic = () => (
-  <svg viewBox="0 0 200 120" className="w-full h-32">
-    <defs>
-      <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#DC2626" stopOpacity="0.2" />
-        <stop offset="100%" stopColor="#F87171" stopOpacity="0.1" />
-      </linearGradient>
-    </defs>
-    <rect x="20" y="20" width="160" height="80" rx="8" fill="#FEF2F2" stroke="#DC2626" strokeWidth="2"/>
-    <path d="M40 40 C70 40, 130 80, 160 80" stroke="#DC2626" strokeWidth="2" fill="none"/>
-    <circle cx="100" cy="60" r="20" fill="url(#redGrad)"/>
-    <path d="M60 80 L140 40" stroke="#DC2626" strokeWidth="2" strokeDasharray="4,4"/>
-  </svg>
-);
-// Define animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
+import { Search, ChevronUp, X } from 'lucide-react';
 
 // Complete agents data constant
 const AGENTS_DATA = {
@@ -452,31 +400,6 @@ const AIAgentsShowcase = () => {
     action: filteredAgents.filter(agent => agent.type === 'Action Agent'),
     automation: filteredAgents.filter(agent => agent.type === 'Automation Workflow')
   };
-
-interface AgentTypeBlockProps {
-  title: string;
-  description: string;
-  examples: string[];
-  graphic: React.ComponentType;
-  color: string;
-}
-
-// Agent Type Block Component
-const AgentTypeBlock: React.FC<AgentTypeBlockProps>  = ({ title, description, examples, graphic: Graphic, color }) => (
-  <motion.div variants={fadeInUp} className={`p-6 rounded-lg border-2 ${color} bg-white`}>
-    <h3 className="text-xl font-bold mb-3">{title}</h3>
-    <Graphic />
-    <p className="text-gray-600 my-4">{description}</p>
-    <div className="space-y-2">
-      {examples.map((example, index) => (
-        <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
-          <ArrowRight size={16} />
-          <span>{example}</span>
-        </div>
-      ))}
-    </div>
-  </motion.div>
-);
 
 interface Agent {
   title: string; // Add the title property
