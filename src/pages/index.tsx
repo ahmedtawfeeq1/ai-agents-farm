@@ -557,79 +557,90 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div className={`relative w-full max-w-3xl mx-auto rounded-lg shadow-xl ${getModalColor()} border-2 p-8`}>
-          <button 
-            onClick={onClose} 
-            className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
-          >
-            <X size={24} />
-          </button>
-          
-          <div className="flex items-center gap-4 mb-6">
-            <h2 className="text-3xl font-bold">{agent.title}</h2>
-            <span className="px-3 py-1 bg-white rounded-full text-sm border">
-              {agent.category}
-            </span>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="font-semibold text-xl mb-4">Overview</h3>
-              <p className="text-gray-700 mb-6">{agent.description}</p>
-              
-              <h3 className="font-semibold text-xl mb-4">Use Cases</h3>
-              <p className="text-gray-700 mb-6">{agent.useCase}</p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-xl mb-4">Implementation</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold mb-2">Industries</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {agent.industries.split(', ').map(industry => (
-                      <span key={industry} className="bg-white px-3 py-1 rounded-full text-sm border">
-                        {industry}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold mb-2">Job Functions</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {agent.jobFunctions.split(', ').map(job => (
-                      <span key={job} className="bg-white px-3 py-1 rounded-full text-sm border">
-                        {job}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+  {/* Modal Content */}
+  <div
+    className={`relative w-full sm:max-w-md md:max-w-3xl mx-auto rounded-lg shadow-xl ${getModalColor()} border-2 p-4 sm:p-6 md:p-8`}
+  >
+    {/* Close Button */}
+    <button
+      onClick={onClose}
+      className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+    >
+      <X size={24} />
+    </button>
+
+    {/* Modal Header */}
+    <div className="flex flex-col gap-2 mb-4">
+      <h2 className="text-2xl md:text-3xl font-bold">{agent.title}</h2>
+      <span className="px-3 py-1 bg-white rounded-full text-sm border w-max">
+        {agent.category}
+      </span>
+    </div>
+
+    {/* Modal Body */}
+    <div className="grid gap-6">
+      <div>
+        <h3 className="font-semibold text-lg mb-2">Overview</h3>
+        <p className="text-gray-700">{agent.description}</p>
+      </div>
+
+      <div>
+        <h3 className="font-semibold text-lg mb-2">Use Cases</h3>
+        <p className="text-gray-700">{agent.useCase}</p>
+      </div>
+
+      <div>
+        <h3 className="font-semibold text-lg mb-2">Implementation</h3>
+        <div className="space-y-2">
+          <div>
+            <h4 className="font-semibold mb-1">Industries</h4>
+            <div className="flex flex-wrap gap-2">
+              {agent.industries.split(", ").map((industry) => (
+                <span
+                  key={industry}
+                  className="bg-white px-2 py-1 rounded-full text-xs border"
+                >
+                  {industry}
+                </span>
+              ))}
             </div>
           </div>
-          
-          <div className="mt-8">
-            <h3 className="font-semibold text-xl mb-4">Implementation Guide</h3>
-            <p className="text-gray-700 mb-6">{agent.detailedDescription}</p>
-          </div>
-          
-          <div className="mt-8 flex justify-end gap-4">
-            <button 
-              onClick={onClose}
-              className="px-6 py-3 rounded-lg border hover:bg-gray-50"
-            >
-              Close
-            </button>
-            <button 
-              onClick={handleCoachRedirect}
-              className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-            >
-              Coach me for this!
-            </button>
+
+          <div>
+            <h4 className="font-semibold mb-1">Job Functions</h4>
+            <div className="flex flex-wrap gap-2">
+              {agent.jobFunctions.split(", ").map((job) => (
+                <span
+                  key={job}
+                  className="bg-white px-2 py-1 rounded-full text-xs border"
+                >
+                  {job}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+    </div>
+
+    {/* Footer */}
+    <div className="mt-6 flex justify-end gap-4">
+      <button
+        onClick={onClose}
+        className="px-4 py-2 rounded-lg border text-sm hover:bg-gray-100"
+      >
+        Close
+      </button>
+      <button
+        onClick={handleCoachRedirect}
+        className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700"
+      >
+        Coach me for this!
+      </button>
+    </div>
+  </div>
+</div>
+
     );
   };
 
