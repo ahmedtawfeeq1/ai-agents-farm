@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // Icons for Hamburger and Close
 
 const Navigation = () => {
-  const location = useLocation(); // To highlight the active link
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -18,35 +23,57 @@ const Navigation = () => {
             <Link to="/">The AI Agents Coaching.</Link>
           </div>
 
-          {/* Navigation Links + Button (Right-aligned) */}
-          <div className="flex items-center space-x-6">
-            <ul className="flex space-x-6">
-              {navLinks.map((link) => (
-                <li key={link.to}>
-                  <Link
-                    to={link.to}
-                    className={`text-gray-600 hover:text-blue-600 transition duration-300 text-lg font-medium ${
-                      location.pathname === link.to
-                        ? "border-b-2 border-blue-600 text-blue-600"
-                        : ""
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className="block md:hidden text-gray-600 hover:text-blue-600"
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
 
-            {/* Call-to-Action Button */}
-            <a
-              href="https://wa.me/+201288493425"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              Let's Talk!
-            </a>
-          </div>
+          {/* Navigation Links */}
+          <ul
+            className={`absolute md:relative top-16 left-0 w-full md:w-auto bg-white md:flex space-y-4 md:space-y-0 md:space-x-6 p-6 md:p-0 ${
+              isMenuOpen ? "block" : "hidden"
+            } md:block`}
+          >
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className={`block text-gray-600 hover:text-blue-600 transition duration-300 text-lg font-medium ${
+                    location.pathname === link.to
+                      ? "border-b-2 border-blue-600 text-blue-600"
+                      : ""
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+
+            {/* Call-to-Action Button for Mobile */}
+            <li className="block md:hidden">
+              <a
+                href="https://wa.me/+201288493425"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg block text-center hover:bg-blue-700 transition duration-300"
+              >
+                Let's Talk!
+              </a>
+            </li>
+          </ul>
+
+          {/* Call-to-Action Button (Visible only on larger screens) */}
+          <a
+            href="https://wa.me/+201288493425"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            Let's Talk!
+          </a>
         </div>
       </div>
     </nav>
