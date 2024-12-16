@@ -76,7 +76,7 @@ const EnhancedCoachingJourney = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
-              4-Week AI Mastery Program.
+              4-Week AI Agents Mastery Program.
             </span>
             <h1 className="text-5xl font-bold leading-tight">
               Master AI Agents & <br />{" "}
