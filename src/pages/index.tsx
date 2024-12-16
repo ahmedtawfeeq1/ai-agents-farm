@@ -402,7 +402,16 @@ const AGENTS_DATA = {
     industries: "Corporate, IT, Project Management",
     jobFunctions: "Project Managers, IT Teams",
     category: "Workflow"
-  }
+  },
+  "Customer Success Milestone Workflow": {
+  description: "Automated customer lifecycle milestone management.",
+  type: "Automation Workflow",
+  useCase: "Track and respond to key customer lifecycle events.",
+  detailedDescription: "Monitors customer journey milestones and triggers appropriate actions based on usage patterns, engagement levels, and success metrics. Automatically identifies critical touchpoints such as first value moment, renewal dates, usage milestones, and potential churn indicators.",
+  industries: "SaaS, Technology, Subscription Services, Professional Services",
+  jobFunctions: "Customer Success Managers, Account Managers, Sales Teams",
+  category: "Customer Success"
+}
 };
 
 const AIAgentsShowcase = () => {
@@ -767,6 +776,11 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onSelectAgent }) => {
         <ChevronUp size={24} />
       </button>
       </div>
+        {/* Footer */}
+            <footer className="bg-gray-900 text-white text-center py-6">
+        <p>© 2025 Ahmed Tawfeeq, AI & Automation Specialist. All Rights Reserved.</p>
+      </footer>
+
     </div>
   );
 };
