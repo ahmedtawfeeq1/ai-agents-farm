@@ -6,6 +6,7 @@ const Navigation = () => {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/about", label: "About The Coaching Program!" },
+    { to: "/agents/list", label: "Discover Agents" },
   ];
 
   return (
@@ -38,7 +39,7 @@ const Navigation = () => {
 
             {/* Call-to-Action Button */}
             <a
-              href="https://icancoachyou.online/en/coaches/ahmed-tawfeeq"
+              href="https://wa.me/+201288493425"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
