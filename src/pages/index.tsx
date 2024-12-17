@@ -54,365 +54,604 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-// Complete agents data constant
+
 const AGENTS_DATA = {
   // KNOWLEDGE AGENTS (12)
   "Research Assistant": {
-    description: "A comprehensive research tool for information aggregation and synthesis.",
-    type: "Knowledge Agent",
-    useCase: "Efficiently gather and analyze information from multiple sources.",
-    detailedDescription: "Advanced AI system that scans academic databases, publications, and archives to extract insights and provide comprehensive research summaries.",
-    industries: "Research, Consulting, Education",
-    jobFunctions: "Analysts, Researchers, Consultants",
-    category: "Research & Analysis"
+description: "A comprehensive research tool for information aggregation and synthesis.",
+type: "Knowledge Agent",
+useCase: "Efficiently gather and analyze information from multiple sources.",
+detailedDescription: "Advanced AI system that scans academic databases, publications, and archives to extract insights and provide comprehensive research summaries.",
+industries: "Professional Services, Consulting Services, Education, Corporate Training",
+jobFunctions: "Marketing Analysts, IT Analysts, Project Managers, Strategists",
+category: "Research & Analysis"
   },
   "Proposal/RFP Creator": {
-    description: "Intelligent proposal and RFP response generator.",
-    type: "Knowledge Agent",
-    useCase: "Create professional proposals and bid responses efficiently.",
-    detailedDescription: "Analyzes requirements and generates tailored proposals using company data and industry best practices.",
-    industries: "Consulting, Corporate, Government",
-    jobFunctions: "Business Development, Proposal Writers",
-    category: "Document Creation"
+description: "Intelligent proposal and RFP response generator.",
+type: "Knowledge Agent",
+useCase: "Create professional proposals and bid responses efficiently.",
+detailedDescription: "Analyzes requirements and generates tailored proposals using company data and industry best practices.",
+industries: "Professional Services, Consulting Services, Corporate Training, Legal",
+jobFunctions: "Project Managers, Account Managers, Strategists, Sales Managers",
+category: "Document Creation"
   },
   "Strategy/Business Plan Builder": {
-    description: "Strategic business planning and documentation system.",
-    type: "Knowledge Agent",
-    useCase: "Develop comprehensive business plans and strategies.",
-    detailedDescription: "Creates detailed business plans incorporating market analysis, financial projections, and strategic frameworks.",
-    industries: "Corporate, Startups, Finance",
-    jobFunctions: "Strategists, Business Planners, Executives",
-    category: "Strategic Planning"
+description: "Strategic business planning and documentation system.",
+type: "Knowledge Agent",
+useCase: "Develop comprehensive business plans and strategies.",
+detailedDescription: "Creates detailed business plans incorporating market analysis, financial projections, and strategic frameworks.",
+industries: "Professional Services, Finance, Corporate Training",
+jobFunctions: "Executives, Strategists, Product Managers, Project Managers",
+category: "Strategic Planning"
   },
   "Strategy Report Generator": {
-    description: "Strategic analysis and reporting system.",
-    type: "Knowledge Agent",
-    useCase: "Generate detailed strategy and market analysis reports.",
-    detailedDescription: "Produces comprehensive strategy documents with market insights and recommendations.",
-    industries: "Marketing, Corporate, Consulting",
-    jobFunctions: "Marketing Analysts, Strategists",
-    category: "Strategic Planning"
+description: "Strategic analysis and reporting system.",
+type: "Knowledge Agent",
+useCase: "Generate detailed strategy and market analysis reports.",
+detailedDescription: "Produces comprehensive strategy documents with market insights and recommendations.",
+industries: "Marketing, Professional Services, Consulting Services",
+jobFunctions: "Marketing Analysts, Strategists, Project Managers",
+category: "Strategic Planning"
   },
   "Performance Report Generator": {
-    description: "Performance analysis and reporting tool.",
-    type: "Knowledge Agent",
-    useCase: "Create detailed performance analysis reports.",
-    detailedDescription: "Analyzes performance data to generate insights and recommendations.",
-    industries: "Corporate, IT, Finance",
-    jobFunctions: "Project Managers, Operations, Analysts",
-    category: "Analytics"
+description: "Performance analysis and reporting tool.",
+type: "Knowledge Agent",
+useCase: "Create detailed performance analysis reports.",
+detailedDescription: "Analyzes performance data to generate insights and recommendations.",
+industries: "IT, Operations, Finance, Corporate Training",
+jobFunctions: "Project Managers, Operations Managers, IT Specialists, Marketing Analysts",
+category: "Analytics"
   },
   "Minutes of Meeting Creator": {
-    description: "Automated meeting minutes generator.",
-    type: "Knowledge Agent",
-    useCase: "Generate structured meeting minutes and summaries.",
-    detailedDescription: "Creates organized meeting minutes with action items and key decisions.",
-    industries: "Corporate, Non-Profit, Education",
-    jobFunctions: "Project Managers, Assistants, Coordinators",
-    category: "Documentation"
+description: "Automated meeting minutes generator.",
+type: "Knowledge Agent",
+useCase: "Generate structured meeting minutes and summaries.",
+detailedDescription: "Creates organized meeting minutes with action items and key decisions.",
+industries: "Professional Services, Education, Corporate Training",
+jobFunctions: "Project Managers, Talents Onboarding Specialists, Executives, Coordinators",
+category: "Documentation"
   },
   "Visual Content Generator": {
-    description: "Professional visual content creation tool.",
-    type: "Knowledge Agent",
-    useCase: "Create engaging visual content and presentations.",
-    detailedDescription: "Generates visual content with consistent branding and design principles.",
-    industries: "Marketing, Media, Design",
-    jobFunctions: "Graphic Designers, Content Creators",
-    category: "Content Creation"
+description: "Professional visual content creation tool.",
+type: "Knowledge Agent",
+useCase: "Create engaging visual content and presentations.",
+detailedDescription: "Generates visual content with consistent branding and design principles.",
+industries: "Marketing, Creative Design, Media",
+jobFunctions: "Graphic Designers, Content Creators, Social Media Managers",
+category: "Content Creation"
   },
   "Explainer Content GPT": {
-    description: "Educational content creation assistant.",
-    type: "Knowledge Agent",
-    useCase: "Create clear explanatory content and tutorials.",
-    detailedDescription: "Transforms complex topics into accessible, engaging content.",
-    industries: "Education, Marketing, Media",
-    jobFunctions: "Educators, Marketers, Content Developers",
-    category: "Education"
+description: "Educational content creation assistant.",
+type: "Knowledge Agent",
+useCase: "Create clear explanatory content and tutorials.",
+detailedDescription: "Transforms complex topics into accessible, engaging content.",
+industries: "Education, Corporate Training, Marketing",
+jobFunctions: "Trainers, Content Creators, Marketers, Social Media Managers",
+category: "Education"
   },
   "Training Knowledge Builder": {
-    description: "Training material development system.",
-    type: "Knowledge Agent",
-    useCase: "Create comprehensive training materials.",
-    detailedDescription: "Develops structured training content and assessment materials.",
-    industries: "Education, Corporate Training",
-    jobFunctions: "Trainers, HR Professionals",
-    category: "Training"
+description: "Training material development system.",
+type: "Knowledge Agent",
+useCase: "Create comprehensive training materials.",
+detailedDescription: "Develops structured training content and assessment materials.",
+industries: "Education, Corporate Training, Professional Services",
+jobFunctions: "Trainers, Content Creators, Project Managers",
+category: "Training"
   },
   "Task Allocation Planner": {
-    description: "Intelligent task distribution system.",
-    type: "Knowledge Agent",
-    useCase: "Optimize task allocation and workload management.",
-    detailedDescription: "Plans optimal task distribution based on team capacity and skills.",
-    industries: "Corporate, Project Management",
-    jobFunctions: "Project Managers, Team Leads",
-    category: "Project Management"
+description: "Intelligent task distribution system.",
+type: "Knowledge Agent",
+useCase: "Optimize task allocation and workload management.",
+detailedDescription: "Plans optimal task distribution based on team capacity and skills.",
+industries: "Operations, Project Management, Corporate Training",
+jobFunctions: "Project Managers, Operations Managers, Team Leads",
+category: "Project Management"
   },
   "Quality Control Agent": {
-    description: "Content and product quality assessment tool.",
-    type: "Knowledge Agent",
-    useCase: "Ensure quality standards in deliverables.",
-    detailedDescription: "Reviews and assesses quality against defined standards.",
-    industries: "Manufacturing, Media, Corporate",
-    jobFunctions: "QA Specialists, Editors",
-    category: "Quality Assurance"
+description: "Content and product quality assessment tool.",
+type: "Knowledge Agent",
+useCase: "Ensure quality standards in deliverables.",
+detailedDescription: "Reviews and assesses quality against defined standards.",
+industries: "Manufacturing, Creative Design, Media",
+jobFunctions: "Graphic Designers, Content Creators, Quality Control Specialists",
+category: "Quality Assurance"
   },
   "Personal Branding Content Creator": {
-    description: "Personal brand content development system.",
-    type: "Knowledge Agent",
-    useCase: "Create consistent personal branding content.",
-    detailedDescription: "Generates brand-aligned content across various platforms.",
-    industries: "Marketing, Personal Development",
-    jobFunctions: "Content Creators, Influencers, Marketers",
-    category: "Branding"
+description: "Personal brand content development system.",
+type: "Knowledge Agent",
+useCase: "Create consistent personal branding content.",
+detailedDescription: "Generates brand-aligned content across various platforms.",
+industries: "Marketing, Personal Development, Creative Design",
+jobFunctions: "Content Creators, Marketers, Social Media Managers",
+category: "Branding"
   },
-
-  // ACTION AGENTS (12)
-  "AI Calendar Assistant": {
-    description: "Intelligent calendar management system.",
-    type: "Action Agent",
-    useCase: "Optimize scheduling and calendar management.",
-    detailedDescription: "Manages calendars and schedules with smart conflict resolution.",
-    industries: "Corporate, Education, Freelance",
-    jobFunctions: "Executives, Managers, Assistants",
-    category: "Productivity"
-  },
-  "Task Reporting Assistant": {
-    description: "Task progress tracking system.",
-    type: "Action Agent",
-    useCase: "Monitor and report on task progress.",
-    detailedDescription: "Tracks and reports on task completion and project status.",
-    industries: "Corporate, IT, Operations",
-    jobFunctions: "Team Leads, Operations Managers",
-    category: "Project Management"
-  },
-  "Meeting Assistant": {
-    description: "Meeting management and follow-up system.",
-    type: "Action Agent",
-    useCase: "Manage meeting logistics and follow-up.",
-    detailedDescription: "Handles meeting coordination and action item tracking.",
-    industries: "Corporate, Consulting, Non-Profit",
-    jobFunctions: "Executives, Assistants, Coordinators",
-    category: "Collaboration"
-  },
-  "Team Monitoring Assistant": {
-    description: "Team performance tracking system.",
-    type: "Action Agent",
-    useCase: "Monitor team productivity and engagement.",
-    detailedDescription: "Tracks team metrics and identifies performance patterns.",
-    industries: "IT, Corporate, Startups",
-    jobFunctions: "Team Leads, HR Professionals",
-    category: "Management"
-  },
-  "Study Assistant": {
-    description: "Learning support and organization tool.",
-    type: "Action Agent",
-    useCase: "Optimize study sessions and learning.",
-    detailedDescription: "Creates personalized study plans and tracks progress.",
-    industries: "Education, Corporate Training",
-    jobFunctions: "Students, Trainers, Educators",
-    category: "Education"
-  },
-  "Content Planning Assistant": {
-    description: "Content strategy automation tool.",
-    type: "Action Agent",
-    useCase: "Plan and organize content creation.",
-    detailedDescription: "Manages content calendars and creation workflows.",
-    industries: "Marketing, Media, Design",
-    jobFunctions: "Content Managers, Marketers",
-    category: "Content"
-  },
-  "Ticketing Assistant": {
-    description: "Support ticket management system.",
-    type: "Action Agent",
-    useCase: "Manage and prioritize support tickets.",
-    detailedDescription: "Processes and routes support tickets efficiently.",
-    industries: "IT, Customer Service",
-    jobFunctions: "Support Agents, IT Specialists",
-    category: "Support"
-  },
-  "HR Onboarding Agent": {
-    description: "Employee onboarding automation system.",
-    type: "Action Agent",
-    useCase: "Streamline employee onboarding process.",
-    detailedDescription: "Automates onboarding tasks and documentation.",
-    industries: "Corporate, HR, Startups",
-    jobFunctions: "HR Professionals, Onboarding Specialists",
-    category: "HR"
-  },
-  "Performance Manager": {
-    description: "Employee performance management tool.",
-    type: "Action Agent",
-    useCase: "Track and manage employee performance.",
-    detailedDescription: "Monitors performance metrics and manages reviews.",
-    industries: "Corporate, IT, Operations",
-    jobFunctions: "Team Leads, Operations Managers",
-    category: "Management"
-  },
-  "Sales Team Notification Agent": {
-    description: "Sales activity notification system.",
-    type: "Action Agent",
-    useCase: "Keep sales teams updated on activities.",
-    detailedDescription: "Sends targeted notifications about sales activities.",
-    industries: "Sales, Corporate, Startups",
-    jobFunctions: "Sales Managers, Sales Representatives",
-    category: "Sales"
-  },
-  "Lead Generation Assistant": {
-    description: "Lead identification and qualification tool.",
-    type: "Action Agent",
-    useCase: "Identify and qualify potential leads.",
-    detailedDescription: "Automates lead discovery and qualification process.",
-    industries: "Marketing, Sales",
-    jobFunctions: "Sales Teams, Marketers",
-    category: "Sales"
-  },
-  "Product Management Assistant": {
-    description: "Product development management system.",
-    type: "Action Agent",
-    useCase: "Manage product development workflow.",
-    detailedDescription: "Coordinates product development activities and tracking.",
-    industries: "Corporate, IT, Startups",
-    jobFunctions: "Product Managers, Project Managers",
-    category: "Product"
-  },
-
   // AUTOMATION WORKFLOWS (14)
   "CRM to WhatsApp/Telegram": {
-    description: "CRM messaging integration system.",
-    type: "Automation Workflow",
-    useCase: "Automate messaging between platforms.",
-    detailedDescription: "Integrates CRM data with messaging platforms.",
-    industries: "Marketing, Sales",
-    jobFunctions: "Marketers, Sales Representatives",
-    category: "Integration"
+description: "CRM messaging integration system.",
+type: "Automation Workflow",
+useCase: "Automate messaging between CRM systems and messaging platforms.",
+detailedDescription: "Integrates CRM data with messaging tools like WhatsApp and Telegram to automate customer communication, ensuring timely follow-ups and notifications for improved engagement and response rates.",
+industries: "Sales, Marketing, Customer Service",
+jobFunctions: "Sales Representatives, Marketers, Customer Success Managers",
+category: "Integration"
   },
   "Reports Automation": {
-    description: "Automated reporting system.",
-    type: "Automation Workflow",
-    useCase: "Automate report generation and distribution.",
-    detailedDescription: "Generates and distributes reports automatically.",
-    industries: "Corporate, IT, Finance",
-    jobFunctions: "Analysts, Operations Managers",
-    category: "Reporting"
+description: "Automated reporting system.",
+type: "Automation Workflow",
+useCase: "Automate report generation and distribution.",
+detailedDescription: "Automatically collects data from various sources, generates insightful reports, and distributes them to stakeholders on a scheduled basis for enhanced decision-making.",
+industries: "Finance, IT, Operations",
+jobFunctions: "Analysts, Operations Managers, Project Managers",
+category: "Reporting"
   },
   "Lead Transfer Workflow": {
-    description: "Lead routing automation system.",
-    type: "Automation Workflow",
-    useCase: "Automate lead distribution process.",
-    detailedDescription: "Routes leads based on defined criteria and rules.",
-    industries: "Sales, CRM Management",
-    jobFunctions: "Sales Teams, CRM Managers",
-    category: "Sales"
+description: "Lead routing automation system.",
+type: "Automation Workflow",
+useCase: "Automate lead distribution and transfer processes.",
+detailedDescription: "Routes incoming leads to appropriate sales representatives or teams based on predefined rules like region, priority, or workload to maximize lead conversion efficiency.",
+industries: "Sales, CRM Management, Marketing",
+jobFunctions: "Sales Managers, Sales Representatives, Account Managers",
+category: "Sales"
   },
   "Ad Account Notifications": {
-    description: "Advertising performance monitoring.",
-    type: "Automation Workflow",
-    useCase: "Monitor ad accounts and performance.",
-    detailedDescription: "Tracks ad metrics and sends notifications.",
-    industries: "Marketing, Advertising",
-    jobFunctions: "Ad Managers, Marketers",
-    category: "Advertising"
+description: "Advertising performance monitoring.",
+type: "Automation Workflow",
+useCase: "Monitor ad account metrics and notify teams.",
+detailedDescription: "Tracks ad performance across campaigns, identifies anomalies, and sends real-time notifications to ensure advertising effectiveness and quick decision-making.",
+industries: "Marketing, Advertising, Media",
+jobFunctions: "Ad Managers, Marketers, Social Media Managers",
+category: "Advertising"
   },
   "Trend-to-Content Planner": {
-    description: "Trend-based content automation.",
-    type: "Automation Workflow",
-    useCase: "Create content plans from trends.",
-    detailedDescription: "Generates content plans based on trending topics.",
-    industries: "Marketing, Media",
-    jobFunctions: "Content Strategists, Marketers",
-    category: "Content"
+description: "Trend-based content automation system.",
+type: "Automation Workflow",
+useCase: "Generate content plans based on trending topics.",
+detailedDescription: "Scans trending topics across platforms and automates the creation of content plans to align with audience interests and improve engagement rates.",
+industries: "Marketing, Creative Design, Media",
+jobFunctions: "Content Creators, Content Strategists, Marketers",
+category: "Content"
   },
   "Event Tracker Automation": {
-    description: "Event monitoring system.",
-    type: "Automation Workflow",
-    useCase: "Track and manage event metrics.",
-    detailedDescription: "Monitors event performance and engagement.",
-    industries: "Corporate, Marketing, Events",
-    jobFunctions: "Event Managers, Coordinators",
-    category: "Events"
+description: "Event performance tracking and monitoring tool.",
+type: "Automation Workflow",
+useCase: "Track and report on event metrics and engagement.",
+detailedDescription: "Automates the collection and analysis of event data, tracking engagement, attendance, and ROI to generate actionable insights for event organizers.",
+industries: "Events Management, Marketing, Corporate Training",
+jobFunctions: "Event Managers, Coordinators, Project Managers",
+category: "Events"
   },
   "Automated Email Actions": {
-    description: "Email automation system.",
-    type: "Automation Workflow",
-    useCase: "Automate email responses and sequences.",
-    detailedDescription: "Manages automated email workflows and responses.",
-    industries: "Sales, Marketing, IT",
-    jobFunctions: "Sales Teams, IT Professionals",
-    category: "Communication"
+description: "Email automation and response system.",
+type: "Automation Workflow",
+useCase: "Automate email workflows and sequences.",
+detailedDescription: "Manages automated email campaigns, responses, and follow-ups to improve efficiency in communication and lead nurturing workflows.",
+industries: "Sales, Marketing, IT",
+jobFunctions: "Sales Representatives, IT Specialists, Marketers",
+category: "Communication"
   },
   "LinkedIn/Email Outreach": {
-    description: "Multi-channel outreach automation.",
-    type: "Automation Workflow",
-    useCase: "Automate professional networking outreach.",
-    detailedDescription: "Coordinates outreach across LinkedIn and email.",
-    industries: "Sales, Marketing",
-    jobFunctions: "Sales Teams, Outreach Specialists",
-    category: "Outreach"
+description: "Multi-channel outreach automation system.",
+type: "Automation Workflow",
+useCase: "Automate professional networking outreach.",
+detailedDescription: "Integrates LinkedIn and email platforms to streamline outreach processes, ensuring efficient engagement with leads, clients, or partners.",
+industries: "Sales, Marketing, Professional Services",
+jobFunctions: "Sales Representatives, Marketers, Outreach Specialists",
+category: "Outreach"
   },
   "Legal Document Automation": {
-    description: "Legal document processing system.",
-    type: "Automation Workflow",
-    useCase: "Automate legal document workflows.",
-    detailedDescription: "Processes and manages legal documentation.",
-    industries: "Legal, Corporate, HR",
-    jobFunctions: "Legal Teams, HR Professionals",
-    category: "Legal"
+description: "Legal document processing system.",
+type: "Automation Workflow",
+useCase: "Automate legal document workflows and processing.",
+detailedDescription: "Automates document creation, review, and approval processes, ensuring compliance with legal standards and improving document management efficiency.",
+industries: "Legal, Corporate, Professional Services",
+jobFunctions: "Legal Teams, Project Managers, HR Professionals",
+category: "Legal"
   },
   "Task Reminders Workflow": {
-    description: "Task reminder automation system.",
-    type: "Automation Workflow",
-    useCase: "Automate task reminder sequences.",
-    detailedDescription: "Manages automated task reminders and follow-ups.",
-    industries: "Corporate, IT, Operations",
-    jobFunctions: "Team Members, Project Managers",
-    category: "Productivity"
+description: "Task reminder automation system.",
+type: "Automation Workflow",
+useCase: "Automate task reminders and follow-up notifications.",
+detailedDescription: "Schedules automated reminders for tasks and follow-ups, ensuring team members meet deadlines and project milestones efficiently.",
+industries: "Project Management, Operations, IT",
+jobFunctions: "Project Managers, Operations Managers, Team Leads",
+category: "Productivity"
   },
   "Idea and Brainstorming Automation": {
-    description: "Ideation process automation.",
-    type: "Automation Workflow",
-    useCase: "Automate idea collection and management.",
-    detailedDescription: "Manages ideation and brainstorming processes.",
-    industries: "Creative, Corporate, Startups",
-    jobFunctions: "Strategists, Creatives, Marketers",
-    category: "Innovation"
+description: "Automated brainstorming and ideation system.",
+type: "Automation Workflow",
+useCase: "Streamline idea generation and management.",
+detailedDescription: "Facilitates idea collection, organizes brainstorming sessions, and prioritizes innovative concepts for implementation.",
+industries: "Creative Design, Corporate, Startups",
+jobFunctions: "Strategists, Content Creators, Marketers",
+category: "Innovation"
   },
   "Auto-Posting Workflow": {
-    description: "Social media posting automation.",
-    type: "Automation Workflow",
-    useCase: "Automate social media content posting.",
-    detailedDescription: "Manages automated social media posting schedules.",
-    industries: "Marketing, Social Media",
-    jobFunctions: "Social Media Managers, Content Creators",
-    category: "Social Media"
+description: "Social media content posting automation.",
+type: "Automation Workflow",
+useCase: "Automate social media posting schedules.",
+detailedDescription: "Schedules and publishes pre-approved social media posts across multiple platforms to maintain consistent brand presence and engagement.",
+industries: "Marketing, Social Media, Creative Design",
+jobFunctions: "Social Media Managers, Content Creators, Marketers",
+category: "Social Media"
   },
   "KPI Monitoring Automation": {
-    description: "KPI tracking automation system.",
-    type: "Automation Workflow",
-    useCase: "Automate KPI monitoring and alerts.",
-    detailedDescription: "Tracks KPIs and generates automated alerts.",
-    industries: "Corporate, Operations, IT",
-    jobFunctions: "Operations Managers, Analysts",
-    category: "Analytics"
+description: "KPI tracking and monitoring system.",
+type: "Automation Workflow",
+useCase: "Automate KPI tracking and performance alerts.",
+detailedDescription: "Continuously monitors key performance indicators, generates reports, and triggers alerts when performance deviates from targets.",
+industries: "Operations, IT, Corporate",
+jobFunctions: "Operations Managers, Analysts, IT Specialists",
+category: "Analytics"
   },
   "Event-Based Task Creation": {
-    description: "Event-triggered task automation.",
-    type: "Automation Workflow",
-    useCase: "Create tasks based on system events.",
-    detailedDescription: "Generates tasks automatically from trigger events.",
-    industries: "Corporate, IT, Project Management",
-    jobFunctions: "Project Managers, IT Teams",
-    category: "Workflow"
-  },
-  "Customer Success Monitoring": {
-    description: "Automated customer lifecycle milestone management.",
-    type: "Automation Workflow",
-    useCase: "Track and respond to key customer lifecycle events.",
-    detailedDescription: "Monitors customer journey milestones and triggers appropriate actions based on usage patterns, engagement levels, and success metrics. Automatically identifies critical touchpoints such as first value moment, renewal dates, usage milestones, and potential churn indicators.",
-    industries: "SaaS, Technology, Subscription Services, Professional Services",
-    jobFunctions: "Customer Success Managers, Account Managers, Sales Teams",
-    category: "Customer Success"
+description: "Event-triggered task automation tool.",
+type: "Automation Workflow",
+useCase: "Generate tasks based on predefined system events.",
+detailedDescription: "Automatically creates and assigns tasks triggered by specific events, ensuring timely response and task execution.",
+industries: "Project Management, IT, Operations",
+jobFunctions: "Project Managers, IT Specialists, Operations Managers",
+category: "Workflow"
   }
-};
+} 
+// Complete agents data constant
+// const AGENTS_DATA = {
+//   // KNOWLEDGE AGENTS (12)
+//   "Research Assistant": {
+//     description: "A comprehensive research tool for information aggregation and synthesis.",
+//     type: "Knowledge Agent",
+//     useCase: "Efficiently gather and analyze information from multiple sources.",
+//     detailedDescription: "Advanced AI system that scans academic databases, publications, and archives to extract insights and provide comprehensive research summaries.",
+//     industries: "Research, Consulting, Education",
+//     jobFunctions: "Analysts, Researchers, Consultants",
+//     category: "Research & Analysis"
+//   },
+//   "Proposal/RFP Creator": {
+//     description: "Intelligent proposal and RFP response generator.",
+//     type: "Knowledge Agent",
+//     useCase: "Create professional proposals and bid responses efficiently.",
+//     detailedDescription: "Analyzes requirements and generates tailored proposals using company data and industry best practices.",
+//     industries: "Consulting, Corporate, Government",
+//     jobFunctions: "Business Development, Proposal Writers",
+//     category: "Document Creation"
+//   },
+//   "Strategy/Business Plan Builder": {
+//     description: "Strategic business planning and documentation system.",
+//     type: "Knowledge Agent",
+//     useCase: "Develop comprehensive business plans and strategies.",
+//     detailedDescription: "Creates detailed business plans incorporating market analysis, financial projections, and strategic frameworks.",
+//     industries: "Corporate, Startups, Finance",
+//     jobFunctions: "Strategists, Business Planners, Executives",
+//     category: "Strategic Planning"
+//   },
+//   "Strategy Report Generator": {
+//     description: "Strategic analysis and reporting system.",
+//     type: "Knowledge Agent",
+//     useCase: "Generate detailed strategy and market analysis reports.",
+//     detailedDescription: "Produces comprehensive strategy documents with market insights and recommendations.",
+//     industries: "Marketing, Corporate, Consulting",
+//     jobFunctions: "Marketing Analysts, Strategists",
+//     category: "Strategic Planning"
+//   },
+//   "Performance Report Generator": {
+//     description: "Performance analysis and reporting tool.",
+//     type: "Knowledge Agent",
+//     useCase: "Create detailed performance analysis reports.",
+//     detailedDescription: "Analyzes performance data to generate insights and recommendations.",
+//     industries: "Corporate, IT, Finance",
+//     jobFunctions: "Project Managers, Operations, Analysts",
+//     category: "Analytics"
+//   },
+//   "Minutes of Meeting Creator": {
+//     description: "Automated meeting minutes generator.",
+//     type: "Knowledge Agent",
+//     useCase: "Generate structured meeting minutes and summaries.",
+//     detailedDescription: "Creates organized meeting minutes with action items and key decisions.",
+//     industries: "Corporate, Non-Profit, Education",
+//     jobFunctions: "Project Managers, Assistants, Coordinators",
+//     category: "Documentation"
+//   },
+//   "Visual Content Generator": {
+//     description: "Professional visual content creation tool.",
+//     type: "Knowledge Agent",
+//     useCase: "Create engaging visual content and presentations.",
+//     detailedDescription: "Generates visual content with consistent branding and design principles.",
+//     industries: "Marketing, Media, Design",
+//     jobFunctions: "Graphic Designers, Content Creators",
+//     category: "Content Creation"
+//   },
+//   "Explainer Content GPT": {
+//     description: "Educational content creation assistant.",
+//     type: "Knowledge Agent",
+//     useCase: "Create clear explanatory content and tutorials.",
+//     detailedDescription: "Transforms complex topics into accessible, engaging content.",
+//     industries: "Education, Marketing, Media",
+//     jobFunctions: "Educators, Marketers, Content Developers",
+//     category: "Education"
+//   },
+//   "Training Knowledge Builder": {
+//     description: "Training material development system.",
+//     type: "Knowledge Agent",
+//     useCase: "Create comprehensive training materials.",
+//     detailedDescription: "Develops structured training content and assessment materials.",
+//     industries: "Education, Corporate Training",
+//     jobFunctions: "Trainers, HR Professionals",
+//     category: "Training"
+//   },
+//   "Task Allocation Planner": {
+//     description: "Intelligent task distribution system.",
+//     type: "Knowledge Agent",
+//     useCase: "Optimize task allocation and workload management.",
+//     detailedDescription: "Plans optimal task distribution based on team capacity and skills.",
+//     industries: "Corporate, Project Management",
+//     jobFunctions: "Project Managers, Team Leads",
+//     category: "Project Management"
+//   },
+//   "Quality Control Agent": {
+//     description: "Content and product quality assessment tool.",
+//     type: "Knowledge Agent",
+//     useCase: "Ensure quality standards in deliverables.",
+//     detailedDescription: "Reviews and assesses quality against defined standards.",
+//     industries: "Manufacturing, Media, Corporate",
+//     jobFunctions: "QA Specialists, Editors",
+//     category: "Quality Assurance"
+//   },
+//   "Personal Branding Content Creator": {
+//     description: "Personal brand content development system.",
+//     type: "Knowledge Agent",
+//     useCase: "Create consistent personal branding content.",
+//     detailedDescription: "Generates brand-aligned content across various platforms.",
+//     industries: "Marketing, Personal Development",
+//     jobFunctions: "Content Creators, Influencers, Marketers",
+//     category: "Branding"
+//   },
+
+//   // ACTION AGENTS (12)
+//   "AI Calendar Assistant": {
+//     description: "Intelligent calendar management system.",
+//     type: "Action Agent",
+//     useCase: "Optimize scheduling and calendar management.",
+//     detailedDescription: "Manages calendars and schedules with smart conflict resolution.",
+//     industries: "Corporate, Education, Freelance",
+//     jobFunctions: "Executives, Managers, Assistants",
+//     category: "Productivity"
+//   },
+//   "Task Reporting Assistant": {
+//     description: "Task progress tracking system.",
+//     type: "Action Agent",
+//     useCase: "Monitor and report on task progress.",
+//     detailedDescription: "Tracks and reports on task completion and project status.",
+//     industries: "Corporate, IT, Operations",
+//     jobFunctions: "Team Leads, Operations Managers",
+//     category: "Project Management"
+//   },
+//   "Meeting Assistant": {
+//     description: "Meeting management and follow-up system.",
+//     type: "Action Agent",
+//     useCase: "Manage meeting logistics and follow-up.",
+//     detailedDescription: "Handles meeting coordination and action item tracking.",
+//     industries: "Corporate, Consulting, Non-Profit",
+//     jobFunctions: "Executives, Assistants, Coordinators",
+//     category: "Collaboration"
+//   },
+//   "Team Monitoring Assistant": {
+//     description: "Team performance tracking system.",
+//     type: "Action Agent",
+//     useCase: "Monitor team productivity and engagement.",
+//     detailedDescription: "Tracks team metrics and identifies performance patterns.",
+//     industries: "IT, Corporate, Startups",
+//     jobFunctions: "Team Leads, HR Professionals",
+//     category: "Management"
+//   },
+//   "Study Assistant": {
+//     description: "Learning support and organization tool.",
+//     type: "Action Agent",
+//     useCase: "Optimize study sessions and learning.",
+//     detailedDescription: "Creates personalized study plans and tracks progress.",
+//     industries: "Education, Corporate Training",
+//     jobFunctions: "Students, Trainers, Educators",
+//     category: "Education"
+//   },
+//   "Content Planning Assistant": {
+//     description: "Content strategy automation tool.",
+//     type: "Action Agent",
+//     useCase: "Plan and organize content creation.",
+//     detailedDescription: "Manages content calendars and creation workflows.",
+//     industries: "Marketing, Media, Design",
+//     jobFunctions: "Content Managers, Marketers",
+//     category: "Content"
+//   },
+//   "Ticketing Assistant": {
+//     description: "Support ticket management system.",
+//     type: "Action Agent",
+//     useCase: "Manage and prioritize support tickets.",
+//     detailedDescription: "Processes and routes support tickets efficiently.",
+//     industries: "IT, Customer Service",
+//     jobFunctions: "Support Agents, IT Specialists",
+//     category: "Support"
+//   },
+//   "HR Onboarding Agent": {
+//     description: "Employee onboarding automation system.",
+//     type: "Action Agent",
+//     useCase: "Streamline employee onboarding process.",
+//     detailedDescription: "Automates onboarding tasks and documentation.",
+//     industries: "Corporate, HR, Startups",
+//     jobFunctions: "HR Professionals, Onboarding Specialists",
+//     category: "HR"
+//   },
+//   "Performance Manager": {
+//     description: "Employee performance management tool.",
+//     type: "Action Agent",
+//     useCase: "Track and manage employee performance.",
+//     detailedDescription: "Monitors performance metrics and manages reviews.",
+//     industries: "Corporate, IT, Operations",
+//     jobFunctions: "Team Leads, Operations Managers",
+//     category: "Management"
+//   },
+//   "Sales Team Notification Agent": {
+//     description: "Sales activity notification system.",
+//     type: "Action Agent",
+//     useCase: "Keep sales teams updated on activities.",
+//     detailedDescription: "Sends targeted notifications about sales activities.",
+//     industries: "Sales, Corporate, Startups",
+//     jobFunctions: "Sales Managers, Sales Representatives",
+//     category: "Sales"
+//   },
+//   "Lead Generation Assistant": {
+//     description: "Lead identification and qualification tool.",
+//     type: "Action Agent",
+//     useCase: "Identify and qualify potential leads.",
+//     detailedDescription: "Automates lead discovery and qualification process.",
+//     industries: "Marketing, Sales",
+//     jobFunctions: "Sales Teams, Marketers",
+//     category: "Sales"
+//   },
+//   "Product Management Assistant": {
+//     description: "Product development management system.",
+//     type: "Action Agent",
+//     useCase: "Manage product development workflow.",
+//     detailedDescription: "Coordinates product development activities and tracking.",
+//     industries: "Corporate, IT, Startups",
+//     jobFunctions: "Product Managers, Project Managers",
+//     category: "Product"
+//   },
+
+//   // AUTOMATION WORKFLOWS (14)
+//   "CRM to WhatsApp/Telegram": {
+//     description: "CRM messaging integration system.",
+//     type: "Automation Workflow",
+//     useCase: "Automate messaging between platforms.",
+//     detailedDescription: "Integrates CRM data with messaging platforms.",
+//     industries: "Marketing, Sales",
+//     jobFunctions: "Marketers, Sales Representatives",
+//     category: "Integration"
+//   },
+//   "Reports Automation": {
+//     description: "Automated reporting system.",
+//     type: "Automation Workflow",
+//     useCase: "Automate report generation and distribution.",
+//     detailedDescription: "Generates and distributes reports automatically.",
+//     industries: "Corporate, IT, Finance",
+//     jobFunctions: "Analysts, Operations Managers",
+//     category: "Reporting"
+//   },
+//   "Lead Transfer Workflow": {
+//     description: "Lead routing automation system.",
+//     type: "Automation Workflow",
+//     useCase: "Automate lead distribution process.",
+//     detailedDescription: "Routes leads based on defined criteria and rules.",
+//     industries: "Sales, CRM Management",
+//     jobFunctions: "Sales Teams, CRM Managers",
+//     category: "Sales"
+//   },
+//   "Ad Account Notifications": {
+//     description: "Advertising performance monitoring.",
+//     type: "Automation Workflow",
+//     useCase: "Monitor ad accounts and performance.",
+//     detailedDescription: "Tracks ad metrics and sends notifications.",
+//     industries: "Marketing, Advertising",
+//     jobFunctions: "Ad Managers, Marketers",
+//     category: "Advertising"
+//   },
+//   "Trend-to-Content Planner": {
+//     description: "Trend-based content automation.",
+//     type: "Automation Workflow",
+//     useCase: "Create content plans from trends.",
+//     detailedDescription: "Generates content plans based on trending topics.",
+//     industries: "Marketing, Media",
+//     jobFunctions: "Content Strategists, Marketers",
+//     category: "Content"
+//   },
+//   "Event Tracker Automation": {
+//     description: "Event monitoring system.",
+//     type: "Automation Workflow",
+//     useCase: "Track and manage event metrics.",
+//     detailedDescription: "Monitors event performance and engagement.",
+//     industries: "Corporate, Marketing, Events",
+//     jobFunctions: "Event Managers, Coordinators",
+//     category: "Events"
+//   },
+//   "Automated Email Actions": {
+//     description: "Email automation system.",
+//     type: "Automation Workflow",
+//     useCase: "Automate email responses and sequences.",
+//     detailedDescription: "Manages automated email workflows and responses.",
+//     industries: "Sales, Marketing, IT",
+//     jobFunctions: "Sales Teams, IT Professionals",
+//     category: "Communication"
+//   },
+//   "LinkedIn/Email Outreach": {
+//     description: "Multi-channel outreach automation.",
+//     type: "Automation Workflow",
+//     useCase: "Automate professional networking outreach.",
+//     detailedDescription: "Coordinates outreach across LinkedIn and email.",
+//     industries: "Sales, Marketing",
+//     jobFunctions: "Sales Teams, Outreach Specialists",
+//     category: "Outreach"
+//   },
+//   "Legal Document Automation": {
+//     description: "Legal document processing system.",
+//     type: "Automation Workflow",
+//     useCase: "Automate legal document workflows.",
+//     detailedDescription: "Processes and manages legal documentation.",
+//     industries: "Legal, Corporate, HR",
+//     jobFunctions: "Legal Teams, HR Professionals",
+//     category: "Legal"
+//   },
+//   "Task Reminders Workflow": {
+//     description: "Task reminder automation system.",
+//     type: "Automation Workflow",
+//     useCase: "Automate task reminder sequences.",
+//     detailedDescription: "Manages automated task reminders and follow-ups.",
+//     industries: "Corporate, IT, Operations",
+//     jobFunctions: "Team Members, Project Managers",
+//     category: "Productivity"
+//   },
+//   "Idea and Brainstorming Automation": {
+//     description: "Ideation process automation.",
+//     type: "Automation Workflow",
+//     useCase: "Automate idea collection and management.",
+//     detailedDescription: "Manages ideation and brainstorming processes.",
+//     industries: "Creative, Corporate, Startups",
+//     jobFunctions: "Strategists, Creatives, Marketers",
+//     category: "Innovation"
+//   },
+//   "Auto-Posting Workflow": {
+//     description: "Social media posting automation.",
+//     type: "Automation Workflow",
+//     useCase: "Automate social media content posting.",
+//     detailedDescription: "Manages automated social media posting schedules.",
+//     industries: "Marketing, Social Media",
+//     jobFunctions: "Social Media Managers, Content Creators",
+//     category: "Social Media"
+//   },
+//   "KPI Monitoring Automation": {
+//     description: "KPI tracking automation system.",
+//     type: "Automation Workflow",
+//     useCase: "Automate KPI monitoring and alerts.",
+//     detailedDescription: "Tracks KPIs and generates automated alerts.",
+//     industries: "Corporate, Operations, IT",
+//     jobFunctions: "Operations Managers, Analysts",
+//     category: "Analytics"
+//   },
+//   "Event-Based Task Creation": {
+//     description: "Event-triggered task automation.",
+//     type: "Automation Workflow",
+//     useCase: "Create tasks based on system events.",
+//     detailedDescription: "Generates tasks automatically from trigger events.",
+//     industries: "Corporate, IT, Project Management",
+//     jobFunctions: "Project Managers, IT Teams",
+//     category: "Workflow"
+//   },
+//   "Customer Success Monitoring": {
+//     description: "Automated customer lifecycle milestone management.",
+//     type: "Automation Workflow",
+//     useCase: "Track and respond to key customer lifecycle events.",
+//     detailedDescription: "Monitors customer journey milestones and triggers appropriate actions based on usage patterns, engagement levels, and success metrics. Automatically identifies critical touchpoints such as first value moment, renewal dates, usage milestones, and potential churn indicators.",
+//     industries: "SaaS, Technology, Subscription Services, Professional Services",
+//     jobFunctions: "Customer Success Managers, Account Managers, Sales Teams",
+//     category: "Customer Success"
+//   }
+// };
 
 const AIAgentsShowcase = () => {
   const [searchTerm, setSearchTerm] = useState('');
