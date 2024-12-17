@@ -165,6 +165,115 @@ industries: "Marketing, Personal Development, Creative Design",
 jobFunctions: "Content Creators, Marketers, Social Media Managers",
 category: "Branding"
   },
+  // ACTION AGENTS (12)
+"AI Calendar Assistant": {
+  description: "Intelligent calendar management system.",
+  type: "Action Agent",
+  useCase: "Optimize scheduling and calendar management.",
+  detailedDescription: "Manages calendars, resolves scheduling conflicts, and sends reminders to optimize time management.",
+  industries: "Professional Services, Corporate Training, Education",
+  jobFunctions: "Executives, Managers, Talents Onboarding Specialists, Project Managers",
+  category: "Productivity"
+  },
+  "Task Reporting Assistant": {
+  description: "Task progress tracking system.",
+  type: "Action Agent",
+  useCase: "Monitor and report on task progress.",
+  detailedDescription: "Tracks task status, updates completion progress, and provides insights into bottlenecks and delays.",
+  industries: "Operations, IT, Project Management",
+  jobFunctions: "Operations Managers, Project Managers, Team Leads",
+  category: "Project Management"
+  },
+  "Meeting Assistant": {
+  description: "Meeting management and follow-up system.",
+  type: "Action Agent",
+  useCase: "Manage meeting logistics and follow-up.",
+  detailedDescription: "Automates meeting coordination, captures notes, and assigns follow-up tasks post-meeting.",
+  industries: "Professional Services, Consulting Services, Education",
+  jobFunctions: "Executives, Project Managers, Assistants, Coordinators",
+  category: "Collaboration"
+  },
+  "Team Monitoring Assistant": {
+  description: "Team performance tracking system.",
+  type: "Action Agent",
+  useCase: "Monitor team productivity and engagement.",
+  detailedDescription: "Tracks team performance metrics, identifies productivity gaps, and provides insights for improvements.",
+  industries: "IT, Operations, Corporate Training",
+  jobFunctions: "Operations Managers, IT Specialists, Team Leads",
+  category: "Management"
+  },
+  "Study Assistant": {
+  description: "Learning support and organization tool.",
+  type: "Action Agent",
+  useCase: "Optimize study sessions and learning.",
+  detailedDescription: "Creates personalized study plans, organizes content, and tracks progress for educators and learners.",
+  industries: "Education, Corporate Training",
+  jobFunctions: "Trainers, Content Creators, Talents Onboarding Specialists",
+  category: "Education"
+  },
+  "Content Planning Assistant": {
+  description: "Content strategy automation tool.",
+  type: "Action Agent",
+  useCase: "Plan and organize content creation.",
+  detailedDescription: "Manages content calendars, organizes workflows, and aligns output with marketing strategies.",
+  industries: "Marketing, Creative Design, Media",
+  jobFunctions: "Content Creators, Marketers, Social Media Managers",
+  category: "Content"
+  },
+  "Ticketing Assistant": {
+  description: "Support ticket management system.",
+  type: "Action Agent",
+  useCase: "Manage and prioritize support tickets.",
+  detailedDescription: "Automates ticket creation, routing, and resolution to improve customer support efficiency.",
+  industries: "Customer Service, IT, Operations",
+  jobFunctions: "Customer Success Managers, IT Specialists, Support Agents",
+  category: "Support"
+  },
+  "HR Onboarding Agent": {
+  description: "Employee onboarding automation system.",
+  type: "Action Agent",
+  useCase: "Streamline employee onboarding process.",
+  detailedDescription: "Automates onboarding tasks, including document collection, training schedules, and progress tracking.",
+  industries: "Corporate Training, HR, Professional Services",
+  jobFunctions: "Talents Onboarding Specialists, HR Professionals, Trainers",
+  category: "HR"
+  },
+  "Performance Manager": {
+  description: "Employee performance management tool.",
+  type: "Action Agent",
+  useCase: "Track and manage employee performance.",
+  detailedDescription: "Monitors performance metrics, provides evaluations, and recommends areas for improvement.",
+  industries: "Operations, IT, Corporate Training",
+  jobFunctions: "Operations Managers, Team Leads, Project Managers",
+  category: "Management"
+  },
+  "Sales Team Notification Agent": {
+  description: "Sales activity notification system.",
+  type: "Action Agent",
+  useCase: "Keep sales teams updated on activities.",
+  detailedDescription: "Sends real-time notifications about sales activities, updates, and opportunities.",
+  industries: "Sales, Marketing, Events Management",
+  jobFunctions: "Sales Managers, Sales Representatives, Account Managers",
+  category: "Sales"
+  },
+  "Lead Generation Assistant": {
+  description: "Lead identification and qualification tool.",
+  type: "Action Agent",
+  useCase: "Identify and qualify potential leads.",
+  detailedDescription: "Automates lead discovery, qualifies prospects, and prioritizes opportunities for outreach.",
+  industries: "Marketing, Sales, Professional Services",
+  jobFunctions: "Sales Representatives, Marketers, Account Managers",
+  category: "Sales"
+  },
+  "Product Management Assistant": {
+  description: "Product development management system.",
+  type: "Action Agent",
+  useCase: "Manage product development workflow.",
+  detailedDescription: "Coordinates product development tasks, tracks timelines, and ensures alignment with goals.",
+  industries: "IT, Project Management, Operations",
+  jobFunctions: "Product Managers, Project Managers, Operations Managers",
+  category: "Product"
+  },
   // AUTOMATION WORKFLOWS (14)
   "CRM to WhatsApp/Telegram": {
 description: "CRM messaging integration system.",
@@ -291,6 +400,15 @@ detailedDescription: "Automatically creates and assigns tasks triggered by speci
 industries: "Project Management, IT, Operations",
 jobFunctions: "Project Managers, IT Specialists, Operations Managers",
 category: "Workflow"
+  },
+  "Customer Success Monitoring": {
+    description: "Automated customer lifecycle milestone management.",
+    type: "Automation Workflow",
+    useCase: "Track and respond to key customer lifecycle events.",
+    detailedDescription: "Monitors customer journey milestones and triggers appropriate actions based on usage patterns, engagement levels, and success metrics. Automatically identifies critical touchpoints such as first value moment, renewal dates, usage milestones, and potential churn indicators.",
+    industries: "SaaS, Technology, Subscription Services, Professional Services",
+    jobFunctions: "Customer Success Managers, Account Managers, Sales Teams",
+    category: "Customer Success"
   }
 } 
 // Complete agents data constant
