@@ -113,11 +113,10 @@ const EnhancedCoachingJourney = () => {
                 {steps.map((step, index) => (
                   <motion.div
                     key={index}
-                    className={`p-4 rounded-lg shadow-md cursor-pointer ${
-                      activeStep === index
+                    className={`p-4 rounded-lg shadow-md cursor-pointer ${activeStep === index
                         ? "bg-blue-100 border-2 border-blue-600"
                         : "bg-white"
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     onClick={() => setActiveStep(index)}
                   >
@@ -183,14 +182,50 @@ const EnhancedCoachingJourney = () => {
           className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"
           onClick={() => window.location.href = "https://wa.me/+201288493425"}
         >
-          Book Your Spot 🚀
+          Book Your Spot! 🚀
         </button>
       </motion.div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white text-center py-6">
-        <p>© 2025 Ahmed Tawfeeq, AI & Automation Specialist. All Rights Reserved.</p>
+      <footer className="bg-gray-900 text-white text-left py-8">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <h3 className="text-lg font-semibold mb-2">
+              Ahmed Tawfeeq - AI & Automation Specialist
+            </h3>
+            <p className="text-sm text-gray-400">
+              © 2025 All Rights Reserved.
+            </p>
+          </div>
+          <div className="flex gap-6">
+            <a
+              href="https://www.facebook.com/ahmed.tawfeeq01"
+              className="hover:text-blue-400 transition"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ahmed-tawfeeq/"
+              className="hover:text-blue-400 transition"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://wa.me/+201288493425"
+              className="hover:text-green-400 transition"
+            >
+              WhatsApp
+            </a>
+            <a
+              href="mailto:a.tawfeeq101@gmail.com"
+              className="hover:text-yellow-400 transition"
+            >
+              Email
+            </a>
+          </div>
+        </div>
       </footer>
+
     </div>
   );
 };

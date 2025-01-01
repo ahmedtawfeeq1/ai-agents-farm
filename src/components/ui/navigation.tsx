@@ -1,16 +1,47 @@
-import { useState } from "react";
+import { useState, useContext, createContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
+// Language Context
+interface LanguageContextType {
+  lang: string;
+  setLang: (lang: string) => void;
+}
+
+const LanguageContext = createContext<LanguageContextType>({
+  lang: "en",
+  setLang: () => {},
+});
+
+// Language Provider Component
+export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
+  const [lang, setLang] = useState("en");
+  return (
+    <LanguageContext.Provider value={{ lang, setLang }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
 const Navigation = () => {
   const location = useLocation();
+  const { lang, setLang } = useContext(LanguageContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About The Coaching Program!" },
-    { to: "/agents/list", label: "Discover Agents" },
-  ];
+  const navLinks: {
+    [key: string]: { to: string; label: string }[];
+  } = {
+    en: [
+      { to: "/", label: "Home" },
+      { to: "/en/about", label: "About The Coaching Program!" },
+      { to: "/en/agents/list", label: "Discover Agents" },
+    ],
+    ar: [
+      { to: "/ar", label: "الرئيسية" },
+      { to: "/ar/about", label: "برنامج التدريب" },
+      { to: "/ar/agents/list", label: "اكتشف الوكلاء" },
+    ],
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -19,7 +50,19 @@ const Navigation = () => {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <div className="text-2xl font-bold text-blue-600">
-          <Link to="/">The AI Agents Coaching.</Link>
+          <Link to="/">{lang === "en" ? "The AI Agents Coaching." : "تدريب وكلاء الذكاء الاصطناعي"}</Link>
+        </div>
+
+        {/* Language Switcher */}
+        <div className="md:inline-block">
+          <select
+            className="text-gray-600 border px-2 py-1 rounded-lg"
+            value={lang}
+            onChange={(e) => setLang(e.target.value)}
+          >
+            <option value="en">EN</option>
+            <option value="ar">العربية</option>
+          </select>
         </div>
 
         {/* Hamburger Menu for Mobile */}
@@ -36,7 +79,7 @@ const Navigation = () => {
           }`}
         >
           <ul className="md:flex md:space-x-6 items-center">
-            {navLinks.map((link) => (
+            {navLinks[lang].map((link) => (
               <li key={link.to} className="mb-4 md:mb-0">
                 <Link
                   to={link.to}
@@ -60,7 +103,7 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 inline-block"
             >
-              Let's Talk!
+              {lang === "en" ? "Let's Talk!" : "تواصل معنا!"}
             </a>
           </div>
         </div>
