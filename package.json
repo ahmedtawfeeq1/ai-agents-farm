@@ -3,13 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ahmedtawfeeq1.github.io/ai-agents-farm",
+  "homepage": "https://ahmedtawfeeq.tech",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:github": "vite build --mode github-pages",
-    "predeploy": "npm run build:github && touch dist-github/.nojekyll",
-    "deploy": "gh-pages -d dist-github --dotfiles",
+    "predeploy": "npm run build && touch dist/.nojekyll",
+    "deploy": "gh-pages -d dist --dotfiles",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "shadcn": "npx shadcn-ui add"
